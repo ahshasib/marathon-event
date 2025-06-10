@@ -7,14 +7,15 @@ const MyApplications = () => {
 const {user} = use(AuthContext)
 const [selectedApp, setSelectedApp] = useState(null);
 const [applications,setApplications]=useState([]);
+const[searchtitle,setsearchtitle] = useState("")
 
 useEffect(()=>{
    if(user?.email){
-    fetch(`http://localhost:3000/applications?email=${user.email}`)
+    fetch(`http://localhost:3000/applications?email=${user.email}&title=${searchtitle}`)
     .then(res => res.json())
     .then(data => setApplications(data))
    }
-},[user?.email])
+},[user?.email,searchtitle])
 
 
 return (
@@ -27,6 +28,7 @@ return (
           type="text"
           placeholder="Search by title..."
           className="input input-bordered w-full max-w-md"
+          onChange={(e) => setsearchtitle(e.target.value)}
         />
       </div>
   
