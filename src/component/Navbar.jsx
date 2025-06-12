@@ -50,7 +50,7 @@ const Navbar = () => {
 
 
     return (
-        <div className='bg-blue-800 shadow-sm md:py-2 fixed top-0 left-0 w-full z-50'>
+        <div className='bg-info shadow-sm md:py-2 fixed top-0 left-0 w-full z-50'>
             <div className="navbar w-11/12 mx-auto">
                 <div className="navbar-start">
                     <NavLink to="/">MaraCom</NavLink>
