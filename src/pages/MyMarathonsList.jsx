@@ -1,33 +1,110 @@
-import React, { useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
+import { AuthContext } from '../context/Authcontext/AuthProvider';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const MyMarathonsList = () => {
+  const { user } = use(AuthContext)
+  const [myMarathon, setMymarathon] = useState([])
+  const [selectedMarathon, setSelectedMarathon] = useState(null);
 
-    const [marathons, setMarathons] = useState([
+  // const [marathons, setMarathons] = useState([
+  //     {
+  //       id: 1,
+  //       title: "Dhaka City Marathon",
+  //       startDate: "2025-07-10",
+  //       image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Beach Run Fest",
+  //       startDate: "2025-08-15",
+  //       image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
+  //     },
+  //   ]);
+
+  
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:3000/marathon/${id}`);
+  
+      if (res.data.deletedCount > 0) {
+        setMymarathon((prev) => prev.filter((marathon) => marathon._id !== id));
+  
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: 'Marathon has been successfully deleted.',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.error('Delete failed:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Something went wrong while deleting.',
+      });
+    }
+  };
+
+
+  const handleUpdate = async (updated) => {
+    try {
+      const response = await axios.patch(
+        `http://localhost:3000/marathon/${updated._id}`,
         {
-          id: 1,
-          title: "Dhaka City Marathon",
-          startDate: "2025-07-10",
-          image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
-        },
-        {
-          id: 2,
-          title: "Beach Run Fest",
-          startDate: "2025-08-15",
-          image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
-        },
-      ]);
-    
-      const [selectedMarathon, setSelectedMarathon] = useState(null);
-    
-      const handleDelete = (id) => {
-        setMarathons(marathons.filter((marathon) => marathon.id !== id));
-      };
-    
-      const handleUpdate = (updated) => {
-        setMarathons((prev) =>
-          prev.map((m) => (m.id === updated.id ? updated : m))
+          title: updated.title,
+          marathonDate: updated.startDate, 
+        }
+      );
+  
+      if (response.data.modifiedCount > 0) {
+        
+        const updatedForUI = {
+          ...updated,
+          marathonDate: updated.startDate, 
+          startDate: updated.startDate     
+        };
+  
+        setMymarathon((prev) =>
+          prev.map((m) => (m._id === updated._id ? updatedForUI : m))
         );
-      };
+  
+        Swal.fire({
+          icon: 'success',
+          title: 'Updated!',
+          text: 'Marathon has been updated successfully.',
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.error('Update failed:', error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Something went wrong.',
+      });
+    }
+  };
+  
+    
+
+
+
+
+
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`http://localhost:3000/marathon?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => setMymarathon(data))
+    }
+  }, [user?.email])
+
 
 
   return (
@@ -45,14 +122,15 @@ const MyMarathonsList = () => {
             </tr>
           </thead>
           <tbody>
-            {marathons.map((marathon) => (
-              <tr key={marathon.id}>
+            {myMarathon.map((marathon) => (
+              <tr key={marathon._id}>
                 <td>
                   <img src={marathon.image} alt={marathon.title} className="w-16 h-16 rounded" />
                 </td>
                 <td>{marathon.title}</td>
-                <td>{marathon.startDate}</td>
-                <td className="flex gap-3 justify-center">
+                <td>{marathon.
+                  marathonDate}</td>
+                <td className="flex gap-3 justify-center mt-3">
                   {/* Update Button */}
                   <button
                     onClick={() => setSelectedMarathon(marathon)}
@@ -81,7 +159,7 @@ const MyMarathonsList = () => {
                           <button className="btn">Cancel</button>
                           <button
                             className="btn btn-error"
-                            onClick={() => handleDelete(marathon.id)}
+                            onClick={() => handleDelete(marathon._id)}
                           >
                             Confirm
                           </button>
@@ -108,6 +186,7 @@ const MyMarathonsList = () => {
                   ...selectedMarathon,
                   title: e.target.title.value,
                   startDate: e.target.startDate.value,
+                  _id: selectedMarathon._id
                 };
                 handleUpdate(updated);
                 setSelectedMarathon(null);
