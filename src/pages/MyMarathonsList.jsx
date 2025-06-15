@@ -99,7 +99,11 @@ const MyMarathonsList = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/marathon?email=${user.email}`)
+      fetch(`http://localhost:3000/marathon?email=${user.email}`,{
+        headers:{
+          authorization: `Bearer ${user.accessToken}`
+        }
+      })
         .then(res => res.json())
         .then(data => setMymarathon(data))
     }

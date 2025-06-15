@@ -11,9 +11,17 @@ const[searchtitle,setsearchtitle] = useState("")
 
 useEffect(()=>{
    if(user?.email){
-    fetch(`http://localhost:3000/applications?email=${user.email}&title=${searchtitle}`)
+    fetch(`http://localhost:3000/applications?email=${user.email}&title=${searchtitle}`,{
+      headers:{
+        authorization: `Bearer ${user.accessToken}`
+      }
+    })
     .then(res => res.json())
-    .then(data => setApplications(data))
+    .then(data => {
+      
+      setApplications(data)
+    })
+    
    }
 },[user?.email,searchtitle])
 
