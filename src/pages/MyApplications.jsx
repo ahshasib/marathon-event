@@ -1,49 +1,86 @@
-import React, { use, useEffect, useState } from 'react'
-import { AuthContext } from '../context/Authcontext/AuthProvider'
-
-
+import React, { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../context/Authcontext/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyApplications = () => {
-const {user} = use(AuthContext)
-const [selectedApp, setSelectedApp] = useState(null);
-const [applications,setApplications]=useState([]);
-const[searchtitle,setsearchtitle] = useState("")
+  const { user } = useContext(AuthContext);
+  const [applications, setApplications] = useState([]);
+  const [editData, setEditData] = useState(null);
 
-useEffect(()=>{
-   if(user?.email){
-    fetch(`http://localhost:3000/applications?email=${user.email}&title=${searchtitle}`,{
-      headers:{
-        authorization: `Bearer ${user.accessToken}`
+  useEffect(() => {
+    if (user?.email) {
+      fetch(`http://localhost:3000/applications?email=${user.email}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`
+        }
+      })
+        .then(res => res.json())
+        .then(data => setApplications(data));
+    }
+  }, [user?.email]);
+
+  const handleDelete = async (id) => {
+    try {
+      const res = await fetch(`http://localhost:3000/applications/${id}`, {
+        method: "DELETE",
+      });
+
+      const data = await res.json();
+      if (data.deletedCount > 0) {
+        setApplications(prev => prev.filter(app => app._id !== id));
+
+        Swal.fire({
+          icon: 'success',
+          title: 'Deleted!',
+          text: 'Application has been successfully deleted.',
+          timer: 2000,
+          showConfirmButton: false,
+        });
       }
-    })
-    .then(res => res.json())
-    .then(data => {
-      
-      setApplications(data)
-    })
-    
-   }
-},[user?.email,searchtitle])
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: 'Something went wrong while deleting.',
+      });
+    }
+  };
 
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`http://localhost:3000/applications/${editData._id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editData),
+    });
 
-return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">My Applications</h2>
-  
-      {/* Search */}
-      <div className="mb-4">
-        <input
-          type="text"
-          placeholder="Search by title..."
-          className="input input-bordered w-full max-w-md"
-          onChange={(e) => setsearchtitle(e.target.value)}
-        />
-      </div>
-  
-      {/* Table for desktop */}
+    const data = await res.json();
+    if (data.modifiedCount > 0) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Updated!',
+        text: 'Application updated successfully.',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+
+      const updatedList = applications.map(app =>
+        app._id === editData._id ? editData : app
+      );
+      setApplications(updatedList);
+      setEditData(null);
+    }
+  };
+
+  return (
+    <div className=" max-w-6xl mx-auto p-6">
+      <h2 className="text-3xl font-bold text-center mb-6 text-purple-700">📄 My Applications</h2>
+
       <div className="hidden md:block overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead className="bg-yellow-500 text-white">
+        <table className="table table-zebra w-full border rounded-lg">
+          <thead className="bg-base-200 text-base font-semibold">
             <tr>
               <th>Email</th>
               <th>Name</th>
@@ -51,7 +88,7 @@ return (
               <th>Start Date</th>
               <th>Phone</th>
               <th>City</th>
-              <th>Actions</th>
+              <th className="text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -63,36 +100,146 @@ return (
                 <td>{app.StartDate}</td>
                 <td>{app.Phone}</td>
                 <td>{app.City}</td>
-                <td className="flex flex-col gap-2 md:flex-row">
-                  <button className="btn btn-sm bg-blue-500 text-white">Update</button>
-                  <button className="btn btn-sm bg-red-500 text-white">Delete</button>
+                <td className="flex gap-3 justify-center mt-3">
+                  {/* Update Button */}
+                  <button
+                    onClick={() => setEditData(app)}
+                    className="btn btn-sm btn-info"
+                  >
+                    Update
+                  </button>
+
+                  {/* Delete Button */}
+                  <button
+                    onClick={() => document.getElementById(`delete-modal-${app._id}`).showModal()}
+                    className="btn btn-sm btn-error"
+                  >
+                    Delete
+                  </button>
+
+                  {/* Delete Modal */}
+                  <dialog id={`delete-modal-${app._id}`} className="modal">
+                    <div className="modal-box">
+                      <h3 className="font-bold text-lg">Confirm Delete</h3>
+                      <p className="py-4">
+                        Are you sure you want to delete application of <span className="font-semibold">{app.fname} {app.lname}</span>?
+                      </p>
+                      <div className="modal-action">
+                        <form method="dialog" className="flex gap-2 items-center">
+                          <button className="btn">Cancel</button>
+                          <button
+                            className="btn btn-error"
+                            onClick={() => handleDelete(app._id)}
+                          >
+                            Confirm
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </dialog>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-  
-      {/* Card format for mobile */}
+
+      {/* mobile device it will be show like a card */}
       <div className="md:hidden space-y-4">
         {applications.map(app => (
-          <div key={app._id} className="bg-white shadow-md rounded p-4">
-            <p><span className="font-semibold">Email:</span> {app.email}</p>
-            <p><span className="font-semibold">Name:</span> {app.fname} {app.lname}</p>
-            <p><span className="font-semibold">Title:</span> {app.title}</p>
-            <p><span className="font-semibold">Start Date:</span> {app.StartDate}</p>
-            <p><span className="font-semibold">Phone:</span> {app.Phone}</p>
-            <p><span className="font-semibold">City:</span> {app.City}</p>
-            <div className="mt-3 flex gap-2">
-              <button className="btn btn-sm bg-blue-500 text-white">Update</button>
-              <button className="btn btn-sm bg-red-500 text-white ">Delete</button>
+          <div key={app._id} className="bg-white border shadow rounded-lg p-4 space-y-2">
+            <p><strong>Email:</strong> {app.email}</p>
+            <p><strong>Name:</strong> {app.fname} {app.lname}</p>
+            <p><strong>Title:</strong> {app.title}</p>
+            <p><strong>Start Date:</strong> {app.StartDate}</p>
+            <p><strong>Phone:</strong> {app.Phone}</p>
+            <p><strong>City:</strong> {app.City}</p>
+            <div className="flex gap-2 pt-2">
+              <button
+                onClick={() => setEditData(app)}
+                className="btn btn-sm btn-info "
+              >
+                Update
+              </button>
+              <button
+                onClick={() => document.getElementById(`delete-modal-${app._id}`).showModal()}
+                className="btn btn-sm btn-error "
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+
+
+
+      {/* Update Modal */}
+      {editData && (
+        <dialog id="update-modal" className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">Update Application</h3>
+            <form
+              onSubmit={handleUpdate}
+              className="space-y-4 mt-4"
+            >
+              <div>
+                <label className="label">Title (readonly)</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={editData.title}
+                  readOnly
+                  className="input input-bordered w-full"
+                />
+              </div>
+
+              <div>
+                <label className="label">Start Date (readonly)</label>
+                <input
+                  type="text"
+                  name="startDate"
+                  value={editData.StartDate}
+                  readOnly
+                  className="input input-bordered w-full"
+                />
+              </div>
+
+              <div>
+                <label className="label">Phone</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={editData.Phone}
+                  onChange={(e) => setEditData({ ...editData, Phone: e.target.value })}
+                  className="input input-bordered w-full"
+                />
+              </div>
+
+              <div>
+                <label className="label">City</label>
+                <input
+                  type="text"
+                  name="city"
+                  value={editData.City}
+                  onChange={(e) => setEditData({ ...editData, City: e.target.value })}
+                  className="input input-bordered w-full"
+                />
+              </div>
+
+              <div className="modal-action">
+                <button type="submit" className="btn btn-primary">Update</button>
+                <button type="button" className="btn" onClick={() => setEditData(null)}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </dialog>
+      )}
     </div>
   );
-}  
+};
 
-
-export default MyApplications
+export default MyApplications;

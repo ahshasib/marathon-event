@@ -1,26 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
+import Loading from '../component/Loading';
 
-const events = [
-  {
-    title: "City Sprint Marathon",
-    regStart: "2025-06-01",
-    regEnd: "2025-06-15",
-    marathonDate: "2025-07-01",
-    location: "New York City",
-    distance: "10km",
-    description: "A fast-paced city marathon for all levels.",
-    image: "https://i.ibb.co/5gFhJGhs/happy-marathon-runner-showing-smart-watch-her-friend-before-race-nature.jpg",
-  }
-]
+
+
 
 const AllMarathonEvents = () => {
+
+  const [data,setdata] = useState([]);
+
+useEffect(()=>{
+   fetch('http://localhost:3000/marathon')
+  .then(res=>res.json())
+  .then(json => setdata(json))
+},[])
+
+if(!data.length) return <Loading></Loading>
+
+
+
   return (
     <div>
     <div className="px-4 py-12 max-w-7xl mx-auto">
          <h2 className="text-4xl font-bold text-center mb-10">🏃‍♂️ Marathon Events</h2>
          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-           {events.map((event, idx) => (
+           {data.map((event, idx) => (
              <div
                key={idx}
                className="card shadow-xl bg-gradient-to-br from-white to-gray-100 border border-gray-200 hover:scale-[1.03] transition-transform hover:shadow-2xl duration-300"

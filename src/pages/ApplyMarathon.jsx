@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 const ApplyMarathon = () => {
     const {id: marathonID} = useParams()
     const {user} = use(AuthContext)
-    const { _id,title, registrationStartDate, registrationEndDate, marathonDate, location, distance, description, image, createdAt } = useLoaderData();
+    const { _id,title, registrationStartDate, registrationEndDate, marathonDate, location, distance, description, image, createdAt,registrationCount } = useLoaderData();
 
 
 const ApplySubmit = (e)=>{
@@ -56,7 +56,7 @@ const ApplySubmit = (e)=>{
   return (
     <div>
         <div className="w-full md:w-[40%]">
-                        <p className='text-end font-bold'>count: 0</p>
+                        <p className='text-end font-bold'>count:{registrationCount}</p>
                         <h1>{title}</h1>
                         <div className="card bg-base-100 w-full shadow-2xl">
                             <h2 className='text-4xl font-bold text-center text-white py-5 rounded-t-2xl bg-yellow-500'>Book and join</h2>
