@@ -19,11 +19,11 @@ const Leaderboard = () => {
 
   return (
     <div
-      className="hero mt-16 min-h-[60vh] bg-cover bg-center"
+      className="relative mt-16 min-h-[60vh] bg-cover bg-center "
       style={{ backgroundImage: "url(run.jpg)" }}
     >
-      <div className="hero-overlay bg-black bg-opacity-60" />
-      <div className="hero-content text-neutral-content text-center py-10 px-3 sm:px-6 md:px-10 lg:px-14 w-full">
+      <div className=" absolute inset-0 bg-black bg-opacity-30 z-0" />
+      <div className="text-neutral-content text-center py-10 px-3 sm:px-6 md:px-10 lg:px-14 w-full">
         <div className="w-full max-w-6xl mx-auto">
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent mb-4">
             Top Marathon Performers
