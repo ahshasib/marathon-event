@@ -2,8 +2,8 @@
 import React from 'react';
 import { APIProvider, Map } from '@vis.gl/react-google-maps';
 
-const GoogleMap = () => {
-  const center = { lat: 22.3569, lng: 91.7832 }; // Chattogram
+const GoogleMap = ({ lat, lng }) => {
+    const center = { lat, lng }; 
 
   return (
     <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAP_API_KEY}>

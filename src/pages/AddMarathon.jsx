@@ -107,6 +107,19 @@ const {user} = use(AuthContext)
         </div>
 
         <div className="mt-4">
+          <label className="label">City</label>
+          <select name="City Nmae" className="select select-bordered w-full">
+            <option value="Dhaka">Dhaka</option>
+            <option value="Khulna">Khulna</option>
+            <option value="Rajsahi">Rajsahi</option>
+            <option value="Chattogram">Chattogram</option>
+            <option value="Rangpur">Rangpur</option>
+            <option value="Sylhet">Sylhet</option>
+            
+          </select>
+        </div>
+
+        <div className="mt-4">
           <label className="label">Description</label>
           <textarea name="description" className="textarea textarea-bordered w-full" required></textarea>
         </div>
