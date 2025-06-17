@@ -57,7 +57,7 @@ const events = [
 const UpcomingRun = () => {
   return (
     <div className="bg-gradient-to-br py-16 px-4 md:px-10">
-    <h2 className="text-3xl font-bold text-center mb-10">🌟 Upcoming Marathons</h2>
+    <h2 className="text-3xl text-center pb-5 md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">🌟 Upcoming Marathons</h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {events.map((card, idx) => (
          <div

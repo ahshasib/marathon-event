@@ -82,7 +82,7 @@ if(!data.length) return <Loading></Loading>
   return (
     <div>
  <div className="px-4 py-12 max-w-7xl mx-auto">
-      <h2 className="text-4xl font-bold text-center mb-10">🏃‍♂️ Marathon Events</h2>
+      <h2 className="text-3xl text-center pb-4 md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">🏃‍♂️ Marathon Events</h2>
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         {data.map((event, idx) => (
           <div
