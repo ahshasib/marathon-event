@@ -32,14 +32,14 @@ const Navbar = () => {
     const menuItems = (
         <>
             <li><NavLink to="/" className="font-bold">Home</NavLink></li>
-            <li><NavLink to="/marathons" className="font-bold">Marathons</NavLink></li>
+            <li><NavLink to="/allmarathon" className="font-bold">Marathons</NavLink></li>
             {user && <>
                 <li className="dropdown dropdown-end">
                     <label tabIndex={0} className=" font-bold">Dashboard <RiArrowDropDownLine /></label>
                     <ul tabIndex={0} className="font-bold dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li><NavLink to="/addmarathon">Add Marathon</NavLink></li>
                         <li><NavLink to="/allmarathon">All-Marathons-Events</NavLink></li>
-                        <li><NavLink to="/dashboard/marathon-details">Marathon Details</NavLink></li>
+                        
                         <li><NavLink to="/mymarathonlist">My Marathon List</NavLink></li>
                         <li><NavLink to="/myApplications">My Application List</NavLink></li>
                     </ul>
