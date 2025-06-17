@@ -110,7 +110,7 @@ if(!data.length) return <Loading></Loading>
               </p>
               <p className="text-gray-700 text-sm">{event.description}</p>
               <div className="mt-3">
-               <Link to={`/marathon/${event._id}`}> <button className="btn btn-outline btn-primary w-full">See Details</button></Link>
+               <Link to={`/marathon/${event._id}`}> <button className="btn bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg w-full">See Details</button></Link>
               </div>
             </div>
           </div>

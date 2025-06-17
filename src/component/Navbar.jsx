@@ -53,7 +53,9 @@ const Navbar = () => {
         <div className='bg-gradient-to-r from-green-400 to-blue-500 shadow-sm md:py-2 fixed top-0 left-0 w-full z-50'>
             <div className="navbar w-11/12 mx-auto">
                 <div className="navbar-start">
-                    <NavLink to="/"><h1 className='text-blue-500 font-bold text-xl'>MilesMaster</h1></NavLink>
+                    <NavLink to="/" className="flex items-center gap-2"> 
+                    <img src="./cardio.png" alt="" className='w-10 rounded-md'/>
+                    <h1 className='text-blue-500 font-bold text-2xl'>MilesMaster</h1></NavLink>
                 </div>
 
                 {/* Mobile dropdown*/}
@@ -83,12 +85,12 @@ const Navbar = () => {
                                 user ? (
                                     <>
                                         <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
-                                        <li><button onClick={handleLogout} className="btn btn-sm">Logout</button></li>
+                                        <li><button onClick={handleLogout} className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Logout</button></li>
                                     </>
                                 ) : (
                                     <>
-                                        <li><NavLink to="/login" className="btn btn-sm">Login</NavLink></li>
-                                        <li><NavLink to="/register" className="btn btn-sm">Register</NavLink></li>
+                                        <li><NavLink to="/login" className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Login</NavLink></li>
+                                        <li><NavLink to="/register" className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Register</NavLink></li>
                                     </>
                                 )
                             }
@@ -106,13 +108,13 @@ const Navbar = () => {
                         user ? (
                             <>
                                 <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
-                                <button onClick={handleLogout} className="btn btn-sm">Logout</button>
+                                <button onClick={handleLogout} className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Logout</button>
                             </>
                         ) : (
                             <>
                             <FaUserCircle size={24}/>
-                                <NavLink to="/login" className="btn btn-md">Login</NavLink>
-                                <NavLink to="/register" className="btn btn-md">Register</NavLink>
+                                <NavLink to="/login" className="btn btn-md bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Login</NavLink>
+                                <NavLink to="/register" className="btn btn-md bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Register</NavLink>
                             </>
                         )
                     }
