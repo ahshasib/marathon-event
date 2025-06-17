@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useLoaderData } from 'react-router'
+import GoogleMap from '../component/GoogleMap';
 
 const MarathonDetailsPage = () => {
     const { _id,title,registrationCount,regStart,regEnd, marathonDate, location, distance, description, image, createdAt } = useLoaderData()
@@ -47,7 +48,9 @@ const MarathonDetailsPage = () => {
                        </div>
                     </div>
 
-                    
+                    <div className='w-[45%]'>
+                        <GoogleMap></GoogleMap>
+                    </div>
                     
                 </div>
             </div>
