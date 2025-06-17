@@ -55,11 +55,11 @@ const ApplySubmit = (e)=>{
     
   return (
     <div>
-        <div className="w-full md:w-[40%]">
+        <div className="w-full md:w-[40%] mx-auto">
                         <p className='text-end font-bold'>count:{registrationCount}</p>
-                        <h1>{title}</h1>
+                        <h1 className='text-center font-bold text-lg md:text-2xl py-10 text-gray-500'>Full fill this form for join "{title}"</h1>
                         <div className="card bg-base-100 w-full shadow-2xl">
-                            <h2 className='text-4xl font-bold text-center text-white py-5 rounded-t-2xl bg-yellow-500'>Book and join</h2>
+                            <h2 className='text-4xl font-bold text-center text-white py-5 rounded-t-2xl bg-gradient-to-r from-green-400 to-blue-500'>Book and join</h2>
                             <form onSubmit={ApplySubmit} className="card-body">
                                 <fieldset className="fieldset">
                                     <div className='flex justify-between'>
@@ -103,7 +103,7 @@ const ApplySubmit = (e)=>{
 
                                     </div>
 
-                                    <button type='submit' className="btn bg-yellow-500 mt-4">Registration Now</button>
+                                    <button type='submit' className="btn bg-gradient-to-r from-green-400 to-blue-500">Registration Now</button>
                                 </fieldset>
                             </form>
                         </div>
