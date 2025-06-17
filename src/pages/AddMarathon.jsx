@@ -27,7 +27,7 @@ const {user} = use(AuthContext)
     data.createdAt = new Date().toISOString();
     data.registrationCount = 0;
     
-   axios.post('http://localhost:3000/marathon',data)
+   axios.post('https://assignment-11-server-ecru-five.vercel.app/marathon',data)
    .then(res=>{
     if(res.data.insertedId){
       Swal.fire({

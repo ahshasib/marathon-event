@@ -13,7 +13,7 @@ const Leaderboard = () => {
     { id: 2, name: 'Sabbir Hossain', city: 'Sylhet', bestTime: '2h 30m', image: './runner3.jpeg' },
     { id: 3, name: 'Nusrat Jahan', city: 'Rajshahi', bestTime: '2h 40m', image: 'runner1.jpg' },
     { id: 4, name: 'Mahmud Hasan', city: 'Chattogram', bestTime: '3h 00m', image: 'https://i.pravatar.cc/150?img=3' },
-    { id: 5, name: 'Rahima Khatun', city: 'Barisal', bestTime: '2h 55m', image: 'https://i.pravatar.cc/150?img=6' },
+    { id: 5, name: 'Rahima Khatun', city: 'Barisal', bestTime: '2h 55m', image: 'runner1.jpg' },
     { id: 6, name: 'Abir Ahmed', city: 'Khulna', bestTime: '2h 45m', image: 'https://i.pravatar.cc/150?img=7' }
   ];
 

@@ -27,7 +27,7 @@ const MyMarathonsList = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/my-marathon?email=${user.email}`,{
+      fetch(`https://assignment-11-server-ecru-five.vercel.app//my-marathon?email=${user.email}`,{
         headers:{
           authorization: `Bearer ${user.accessToken}`,
           
@@ -46,7 +46,7 @@ const MyMarathonsList = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:3000/marathon/${id}`);
+      const res = await axios.delete(`https://assignment-11-server-ecru-five.vercel.app/marathon/${id}`);
   
       if (res.data.deletedCount > 0) {
         setMymarathon((prev) => prev.filter((marathon) => marathon._id !== id));
@@ -73,7 +73,7 @@ const MyMarathonsList = () => {
   const handleUpdate = async (updated) => {
     try {
       const response = await axios.patch(
-        `http://localhost:3000/marathon/${updated._id}`,
+        `https://assignment-11-server-ecru-five.vercel.app/marathon/${updated._id}`,
         {
           title: updated.title,
           marathonDate: updated.startDate, 

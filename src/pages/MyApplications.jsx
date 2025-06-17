@@ -9,7 +9,7 @@ const MyApplications = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:3000/applications?email=${user.email}`, {
+      fetch(`https://assignment-11-server-ecru-five.vercel.app//applications?email=${user.email}`, {
         headers: {
           authorization: `Bearer ${user.accessToken}`
         }
@@ -21,7 +21,7 @@ const MyApplications = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`http://localhost:3000/applications/${id}`, {
+      const res = await fetch(`https://assignment-11-server-ecru-five.vercel.app//applications/${id}`, {
         method: "DELETE",
       });
 
@@ -48,7 +48,7 @@ const MyApplications = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:3000/applications/${editData._id}`, {
+    const res = await fetch(`https://assignment-11-server-ecru-five.vercel.app/applications/${editData._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

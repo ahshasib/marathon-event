@@ -53,7 +53,7 @@ const Navbar = () => {
         <div className='bg-gradient-to-r from-green-400 to-blue-500 shadow-sm md:py-2 fixed top-0 left-0 w-full z-50'>
             <div className="navbar w-11/12 mx-auto">
                 <div className="navbar-start">
-                    <NavLink to="/">MaraCom</NavLink>
+                    <NavLink to="/"><h1 className='text-blue-500 font-bold text-xl'>MilesMaster</h1></NavLink>
                 </div>
 
                 {/* Mobile dropdown*/}

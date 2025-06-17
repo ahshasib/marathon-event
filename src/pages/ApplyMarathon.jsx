@@ -34,7 +34,7 @@ const ApplySubmit = (e)=>{
     }
 
 
-    axios.post('http://localhost:3000/applications',applyInfo)
+    axios.post('https://assignment-11-server-ecru-five.vercel.app/applications',applyInfo)
     .then(res=>{
         if (res.data.insertedID || res.data.acknowledged) {
             Swal.fire({

@@ -11,6 +11,7 @@ import MarathonDetailsPage from '../pages/MarathonDetailsPage';
 import MyMarathonsList from '../pages/MyMarathonsList';
 import ApplyMarathon from '../pages/ApplyMarathon';
 import MyApplications from '../pages/MyApplications';
+import Error from '../pages/Error';
 
 const router = createBrowserRouter(
     [
@@ -56,21 +57,21 @@ const router = createBrowserRouter(
             },
             {
                 path:"/marathon/:id",
-                loader:({params})=>fetch(`http://localhost:3000/marathon/${params.id}`),
+                loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app/marathon/${params.id}`),
                 element:<PrivetRout>
                             <MarathonDetailsPage></MarathonDetailsPage>
                         </PrivetRout>
             },
             {
                 path:"/applymarathon/:id",
-                loader:({params})=>fetch(`http://localhost:3000/marathon/${params.id}`),
+                loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app/marathon/${params.id}`),
                 element:<PrivetRout>
                             <ApplyMarathon></ApplyMarathon>
                         </PrivetRout>
             },
             {
                 path:"/myApplications",
-                // loader:({params})=>fetch(`http://localhost:3000/marathon/${params.id}`),
+                // loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app//marathon/${params.id}`),
                 element:<PrivetRout>
                             <MyApplications></MyApplications>
                         </PrivetRout>
@@ -78,6 +79,10 @@ const router = createBrowserRouter(
 
 
             ]
+        },
+        {
+            path:"*",
+            Component:Error
         }
 
 ]

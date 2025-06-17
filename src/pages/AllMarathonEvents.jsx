@@ -10,7 +10,7 @@ const AllMarathonEvents = () => {
   const [data,setdata] = useState([]);
 
 useEffect(()=>{
-   fetch('http://localhost:3000/marathon')
+   fetch('https://assignment-11-server-ecru-five.vercel.app/marathon')
   .then(res=>res.json())
   .then(json => setdata(json))
 },[])
