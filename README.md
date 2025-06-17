@@ -1,12 +1,54 @@
-# React + Vite
+# 🏃‍♂️ Marathon Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack web application that allows users to create, explore, and register for marathon events. This project is built with React, Tailwind CSS, Node.js, Express.js, MongoDB, and Firebase Authentication.
 
-Currently, two official plugins are available:
+## 🌐 Live Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 [Visit Live Site](https://your-live-site-url.web.app)
 
-## Expanding the ESLint configuration
+## 📂 GitHub Repositories
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Client Repo**: [GitHub - marathon-client](https://github.com/your-username/marathon-client)
+- **Server Repo**: [GitHub - marathon-server](https://github.com/your-username/marathon-server)
+
+---
+
+## 🚀 Features
+
+- 🔐 **JWT-based Authentication** (Email/Password & Google)
+- 📝 **Create & Manage Marathons** (Add, Update, Delete)
+- 📆 **Register for Marathons** (Dynamic Form + Count Update)
+- 👤 **User Dashboard** (My Marathons, My Apply List)
+- 🔎 **Search & Sort** functionality with MongoDB queries
+- ⏳ **Countdown Timer** using `react-countdown-circle-timer`
+- 📱 **Fully Responsive** for mobile, tablet, and desktop
+- 🎨 **Dark / Light Theme Toggle**
+- 🧑‍🎓 Role-based routes & Private route protection
+- 🎉 Stylish animations using `@lottiefiles/react-lottie-player` & `framer-motion`
+- 🛡️ Environment Variables used to protect Firebase and MongoDB credentials
+
+---
+
+## 🧰 Tech Stack
+
+### Frontend
+- React
+- React Router DOM
+- Tailwind CSS
+- Framer Motion
+- SweetAlert2 / React-Toastify
+- Firebase Authentication
+- Lottie Player
+- Axios
+
+### Backend
+- Express.js
+- MongoDB (CRUD + $regex + sort)
+- JWT (jsonwebtoken)
+- CORS
+- dotenv
+
+---
+
+## 📁 Folder Structure
+
