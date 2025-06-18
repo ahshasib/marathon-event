@@ -1,5 +1,5 @@
 // CountdownTimer.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 const minuteSeconds = 60;
@@ -34,21 +34,49 @@ const CountdownTimer = ({ targetDate }) => {
   const now = Date.now() / 1000;
   const remainingTime = Math.max(0, endTime - now);
 
+  const [isTimeUp, setIsTimeUp] = useState(remainingTime <= 0);
+
+  if (isTimeUp || remainingTime === 0) {
+    return (
+      <div className="text-red-600 font-bold text-xl mt-4 text-center">
+        🏁 Marathon  Ended!
+      </div>
+    );
+  }
+
   return (
     <div className="flex gap-3 flex-wrap justify-center mt-4">
-      <CountdownCircleTimer {...timerProps} duration={daySeconds} initialRemainingTime={remainingTime}>
+      <CountdownCircleTimer
+        {...timerProps}
+        duration={daySeconds}
+        initialRemainingTime={remainingTime}
+        onComplete={() => {
+          setIsTimeUp(true);
+          return { shouldRepeat: false };
+        }}
+      >
         {({ elapsedTime }) =>
           renderTime("Days", getTimeDays(remainingTime - elapsedTime))
         }
       </CountdownCircleTimer>
 
-      <CountdownCircleTimer {...timerProps} duration={hourSeconds} initialRemainingTime={remainingTime % daySeconds} onComplete={() => ({ shouldRepeat: true })}>
+      <CountdownCircleTimer
+        {...timerProps}
+        duration={hourSeconds}
+        initialRemainingTime={remainingTime % daySeconds}
+        onComplete={() => ({ shouldRepeat: true })}
+      >
         {({ elapsedTime }) =>
           renderTime("Hours", getTimeHours(remainingTime - elapsedTime))
         }
       </CountdownCircleTimer>
 
-      <CountdownCircleTimer {...timerProps} duration={minuteSeconds} initialRemainingTime={remainingTime % hourSeconds} onComplete={() => ({ shouldRepeat: true })}>
+      <CountdownCircleTimer
+        {...timerProps}
+        duration={minuteSeconds}
+        initialRemainingTime={remainingTime % hourSeconds}
+        onComplete={() => ({ shouldRepeat: true })}
+      >
         {({ elapsedTime }) =>
           renderTime("Minutes", getTimeMinutes(remainingTime - elapsedTime))
         }

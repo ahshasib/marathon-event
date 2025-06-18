@@ -51,12 +51,12 @@ if(!data.length) return <Loading></Loading>
                    🗓️ <strong>Marathon:</strong> {event.marathonDate}
                  </p>
                  <p className="text-sm text-gray-600">
-                   📝 <strong>Registration:</strong> {event.regStart} - {event.regEnd}
+                   📝 <strong>Registration:</strong> {event.regStart} to {event.regEnd}
                  </p>
-                 <p className="text-gray-700 text-sm">{event.description}</p>
+                 <p className="text-gray-700 text-sm line-clamp-3">{event.description}</p>
                  <div className="mt-3">
                   <NavLink to="/marathondetails">
-                  <button className="btn btn-outline btn-primary w-full">See Details</button>
+                  <button className="btn bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg w-full">See Details</button>
                   </NavLink> 
                  </div>
                </div>

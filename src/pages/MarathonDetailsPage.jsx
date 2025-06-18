@@ -9,6 +9,7 @@ const MarathonDetailsPage = () => {
     _id, title, registrationCount, regStart, regEnd, marathonDate,
     City, location, distance, description, image, createdAt
   } = useLoaderData();
+  
 
   const isRegistrationEnded = new Date() > new Date(regEnd);
 
@@ -37,7 +38,7 @@ const MarathonDetailsPage = () => {
             <div className="pt-4 space-y-2">
               <div className='flex flex-col md:flex-row justify-between gap-2'>
                 <h2 className="text-black font-bold text-2xl">{title}</h2>
-                <h3 className="text-blue-500 font-semibold">Total Registration: {registrationCount || 0}</h3>
+                <h3 className="text-red-400 font-bold">Total Registration: {registrationCount || 0}</h3>
               </div>
 
               <p className="text-gray-500">📍 {location}</p>

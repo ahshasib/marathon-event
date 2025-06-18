@@ -141,9 +141,7 @@ const {user} = use(AuthContext)
         </div>
 
 
-        <div className="mt-4">
-          <img src="" alt="Preview" className="w-full rounded-lg" />
-        </div>
+        
 
 
         <div className="mt-6 text-center">
