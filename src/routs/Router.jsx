@@ -44,12 +44,12 @@ const router = createBrowserRouter(
                             <AllMarathonEvents></AllMarathonEvents>
                         </PrivetRout>
             },
-            {
-                path:"/marathondetails",
-                element:<PrivetRout>
-                            <MarathonDetailsPage></MarathonDetailsPage>
-                        </PrivetRout>
-            },
+            // {
+            //     path:"/marathondetails",
+            //     element:<PrivetRout>
+            //                 <MarathonDetailsPage></MarathonDetailsPage>
+            //             </PrivetRout>
+            // },
             {
                 path:"/mymarathonlist",
                 element:<PrivetRout>

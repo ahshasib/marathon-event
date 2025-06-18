@@ -1,14 +1,18 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import GoogleMap from '../component/GoogleMap';
-import CountdownTimer from '../component/CountdownTimer'; // Import the timer
+import CountdownTimer from '../component/CountdownTimer'; 
 import { Helmet } from 'react-helmet-async';
+import Loading from '../component/Loading';
 
 const MarathonDetailsPage = () => {
-  const {
-    _id, title, registrationCount, regStart, regEnd, marathonDate,
-    City, location, distance, description, image, createdAt
-  } = useLoaderData();
+ 
+  const data = useLoaderData();
+if (!data) return <Loading></Loading>;
+const {
+  _id, title, registrationCount, regStart, regEnd, marathonDate,
+  City, location, distance, description, image, createdAt
+} = data
   
 
   const isRegistrationEnded = new Date() > new Date(regEnd);

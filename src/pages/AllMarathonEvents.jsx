@@ -55,7 +55,7 @@ if(!data.length) return <Loading></Loading>
                  </p>
                  <p className="text-gray-700 text-sm line-clamp-3">{event.description}</p>
                  <div className="mt-3">
-                  <NavLink to="/marathondetails">
+                  <NavLink to={`/marathon/${event._id}`}>
                   <button className="btn bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg w-full">See Details</button>
                   </NavLink> 
                  </div>
