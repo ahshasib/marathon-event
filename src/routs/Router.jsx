@@ -13,11 +13,12 @@ import ApplyMarathon from '../pages/ApplyMarathon';
 import MyApplications from '../pages/MyApplications';
 import Error from '../pages/Error';
 
+
 const router = createBrowserRouter(
     [
         {
             path: "/",
-            Component: RootLayout,
+            element: <RootLayout></RootLayout>,
             children: [
                 { 
                 index: true, 
@@ -25,11 +26,11 @@ const router = createBrowserRouter(
             },
             {
                 path:"/login",
-                Component:Login
+                element:<Login></Login>
             },
             {
                 path:"/register",
-                Component:Register
+                element:<Register></Register>
             },
             {
                 path:"/addmarathon",
@@ -82,7 +83,7 @@ const router = createBrowserRouter(
         },
         {
             path:"*",
-            Component:Error
+            element:<Error></Error>
         }
 
 ]
