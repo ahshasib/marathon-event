@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react'
 import { AuthContext } from '../context/Authcontext/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyMarathonsList = () => {
   const { user } = use(AuthContext)
@@ -121,7 +122,10 @@ const MyMarathonsList = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-6 text-purple-700">📋 My Marathons</h2>
+       <Helmet>
+    <title>MyMarathon | MarathonMate</title>
+  </Helmet>
+      <h2 className="text-3xl font-bold text-center mb-6 text-blue-500">📋 My Marathons</h2>
 
       <div className="overflow-x-auto">
         <table className="table table-zebra w-full border rounded-lg">

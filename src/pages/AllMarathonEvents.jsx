@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router'
 import Loading from '../component/Loading';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -20,6 +21,10 @@ if(!data.length) return <Loading></Loading>
 
 
   return (
+    <>
+    <Helmet>
+    <title>AllMarathon | MarathonMate</title>
+  </Helmet>
     <div>
     <div className="px-4 py-12 max-w-7xl mx-auto">
          <h2 className="text-4xl font-bold text-center mb-10">🏃‍♂️ Marathon Events</h2>
@@ -60,6 +65,7 @@ if(!data.length) return <Loading></Loading>
          </div>
        </div>
        </div>
+       </>
   )
 }
 

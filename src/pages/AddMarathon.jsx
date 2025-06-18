@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { AuthContext } from '../context/Authcontext/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -46,9 +47,14 @@ const {user} = use(AuthContext)
   };
 
   return (
+    <>
+    
     <div className="min-h-screen bg-base-200 flex justify-center items-center p-5">
+    <Helmet>
+    <title>AddMarathon | MarathonMate</title>
+  </Helmet>
       <form onSubmit={handleSubmit} className="w-full max-w-3xl bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-bold text-center mb-6 text-primary">Add Marathon</h2>
+        <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">Add Marathon</h2>
 
         <div className="mb-4">
           <label className="label">Marathon Title</label>
@@ -141,10 +147,13 @@ const {user} = use(AuthContext)
 
 
         <div className="mt-6 text-center">
-          <button type="submit" className="btn btn-primary w-full">Submit</button>
+          <button type="submit" className="btn bg-gradient-to-r from-green-400 to-blue-500 w-full">Submit</button>
         </div>
       </form>
     </div>
+    </>
+    
+    
   )
 }
 

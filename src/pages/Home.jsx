@@ -5,7 +5,7 @@ import UpcomingRun from '../component/UpcomingRun'
 import CountdownTimer from '../component/CountdownTimer'
 import TrainingResources from '../component/TrainingResources'
 import Leaderboard from '../component/Leaderboard'
-
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
 
@@ -13,6 +13,9 @@ const Home = () => {
 
   return (
     <>
+     <Helmet>
+        <title>Home | MarathonMate</title>
+      </Helmet>
     <div>
         <Slider></Slider>
     </div>

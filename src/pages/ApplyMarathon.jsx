@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from 'react-router'
 import { AuthContext } from '../context/Authcontext/AuthProvider'
 import axios from 'axios'
 import Swal from 'sweetalert2'
+import { Helmet } from 'react-helmet-async'
 
 const ApplyMarathon = () => {
     const {id: marathonID} = useParams()
@@ -55,6 +56,9 @@ const ApplySubmit = (e)=>{
     
   return (
     <div>
+         <Helmet>
+    <title>ApplyMarathon | MarathonMate</title>
+  </Helmet>
         <div className="w-full md:w-[40%] mx-auto">
                         <p className='text-end font-bold'>count:{registrationCount}</p>
                         <h1 className='text-center font-bold text-lg md:text-2xl py-10 text-gray-500'>Full fill this form for join "{title}"</h1>

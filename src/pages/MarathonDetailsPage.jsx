@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router';
 import GoogleMap from '../component/GoogleMap';
 import CountdownTimer from '../component/CountdownTimer'; // Import the timer
+import { Helmet } from 'react-helmet-async';
 
 const MarathonDetailsPage = () => {
   const {
@@ -24,6 +25,9 @@ const MarathonDetailsPage = () => {
 
   return (
     <div className="min-h-screen flex items-center py-10 px-4">
+       <Helmet>
+    <title>MarathonDetails | MarathonMate</title>
+  </Helmet>
       <div className="bg-gradient-to-r from-green-400 to-blue-500 w-11/12 mx-auto p-6 md:p-10 rounded-2xl shadow-md">
         <div className="flex flex-col md:flex-row justify-between items-start">
           {/* Left Section */}

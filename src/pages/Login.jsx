@@ -6,6 +6,7 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { toast, ToastContainer } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { Link, useLocation, useNavigate } from 'react-router';
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -99,6 +100,9 @@ const Login = () => {
 
   return (
     <div className=" min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex flex-col-reverse lg:flex-row justify-center items-center p-4">
+       <Helmet>
+    <title>Login| MarathonMate</title>
+  </Helmet>
      <ToastContainer></ToastContainer>
        {/* Left side - Form */}
        <motion.div

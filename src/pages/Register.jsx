@@ -6,6 +6,7 @@ import { AuthContext } from './../context/Authcontext/AuthProvider';
 import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
  
@@ -63,6 +64,9 @@ const Register = () => {
   return (
     
     <div className=" min-h-screen bg-gradient-to-br from-blue-100 to-purple-200 flex flex-col-reverse lg:flex-row justify-center items-center p-4 ">
+       <Helmet>
+    <title>Register| MarathonMate</title>
+  </Helmet>
       <ToastContainer />
      {/* Left side - Form */}
      <motion.div

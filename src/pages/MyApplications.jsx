@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../context/Authcontext/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyApplications = () => {
   const { user } = useContext(AuthContext);
@@ -76,7 +77,10 @@ const MyApplications = () => {
 
   return (
     <div className=" max-w-6xl mx-auto p-6">
-      <h2 className="text-3xl font-bold text-center mb-6 text-purple-700">📄 My Applications</h2>
+       <Helmet>
+    <title>MyApplication | MarathonMate</title>
+  </Helmet>
+      <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">📄 My Applications</h2>
 
       <div className="hidden md:block overflow-x-auto">
         <table className="table table-zebra w-full border rounded-lg">
