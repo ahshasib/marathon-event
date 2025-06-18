@@ -4,7 +4,7 @@ A full-stack web application that allows users to create, explore, and register 
 
 ## 🌐 Live Website
 
-🔗 [Visit Live Site](https://your-live-site-url.web.app)
+🔗 [Visit Live Site](https://assignment-11-c46c7.web.app/)
 
 ## 📂 GitHub Repositories
 
