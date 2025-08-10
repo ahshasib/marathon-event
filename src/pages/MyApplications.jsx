@@ -10,7 +10,7 @@ const MyApplications = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`https://assignment-11-server-ecru-five.vercel.app//applications?email=${user.email}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/applications?email=${user.email}`, {
         headers: {
           authorization: `Bearer ${user.accessToken}`
         }

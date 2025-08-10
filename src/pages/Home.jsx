@@ -6,6 +6,7 @@ import CountdownTimer from '../component/CountdownTimer'
 import TrainingResources from '../component/TrainingResources'
 import Leaderboard from '../component/Leaderboard'
 import { Helmet } from 'react-helmet-async';
+import CounterSection from '../component/CounterSection'
 
 const Home = () => {
 
@@ -16,8 +17,11 @@ const Home = () => {
      <Helmet>
         <title>Home | MarathonMate</title>
       </Helmet>
-    <div>
+    <div >
         <Slider></Slider>
+    </div>
+    <div>
+      <CounterSection></CounterSection>
     </div>
     <div>
       <MarathonEvents ></MarathonEvents>

@@ -35,7 +35,7 @@ const ApplySubmit = (e)=>{
     }
 
 
-    axios.post('https://assignment-11-server-ecru-five.vercel.app/applications',applyInfo)
+    axios.post(`${import.meta.env.VITE_API_URL}/applications`,applyInfo)
     .then(res=>{
         if (res.data.insertedID || res.data.acknowledged) {
             Swal.fire({

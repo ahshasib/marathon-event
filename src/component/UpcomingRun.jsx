@@ -1,87 +1,97 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import Loading from './Loading';
+import { Link } from 'react-router-dom';
+import { FaMapMarkerAlt, FaClock, FaRoad, FaTag } from 'react-icons/fa';
 
+const MarathonEvents = () => {
+  const [data, setData] = useState([]);
 
-const events = [
-  {
-    title: "Forest Trail Run",
-    date: "2025-08-05",
-    location: "Oregon, USA",
-    distance: "25km",
-    description: "Explore the dense green trails with this semi-competitive marathon.",
-    image: "https://i.ibb.co/5gFhJGhs/happy-marathon-runner-showing-smart-watch-her-friend-before-race-nature.jpg",
-  },
-  {
-    title: "Coastal Sprint",
-    date: "2025-08-10",
-    location: "Brighton, UK",
-    distance: "10km",
-    description: "Enjoy the cool breeze of the coast in this flat, fast-paced sprint.",
-    image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
-  },
-  {
-    title: "Sunset Run",
-    date: "2025-08-12",
-    location: "Sydney, Australia",
-    distance: "15km",
-    description: "Experience the golden hours while running through iconic spots.",
-    image: "https://i.ibb.co/gMXgyX0F/healthy-lifestyle-running-outdoors.jpg",
-  },
-  {
-    title: "Rainforest Dash",
-    date: "2025-08-15",
-    location: "Amazon, Brazil",
-    distance: "30km",
-    description: "Run through one of the most unique ecosystems on earth.",
-    image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
-  },
-  {
-    title: "Historic City Marathon",
-    date: "2025-08-20",
-    location: "Rome, Italy",
-    distance: "42km",
-    description: "Trace the steps of ancient history while challenging your limits.",
-    image: "https://i.ibb.co/5gFhJGhs/happy-marathon-runner-showing-smart-watch-her-friend-before-race-nature.jpg",
-  },
-  {
-    title: "Midnight Challenge",
-    date: "2025-08-25",
-    location: "Reykjavik, Iceland",
-    distance: "20km",
-    description: "A unique experience running under the midnight sun.",
-    image: "https://i.ibb.co/gMXgyX0F/healthy-lifestyle-running-outdoors.jpg",
-  },
-];
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/marathon/latest`)
+      .then(res => res.json())
+      .then(json => setData(json));
+  }, []);
 
+  if (!data.length) return <Loading />;
 
-
-const UpcomingRun = () => {
   return (
-    <div className="bg-gradient-to-br py-16 px-4 md:px-10">
-      <h2 className="text-3xl text-center pb-5 md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">🌟 Upcoming Marathons</h2>
-      <p className='w-[90%] mx-auto md:w-[60%] text-center font-semibold text-gray-500 pb-8'>Get ready to lace up your shoes and push your limits! Explore our list of upcoming marathons happening across the country. Whether you're a seasoned runner or just starting out, these events offer the perfect opportunity to challenge yourself, connect with the community, and experience the thrill of the race. 
+    <div className="bg-gray-800 py-10">
+      {/* Section Header */}
+      <div className="text-center mb-10">
+        <p className="lightgreen uppercase tracking-widest text-sm font-semibold">
+          Don’t Miss Out
+        </p>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-white mt-2">
+          Upcoming Marathon Events
+        </h2>
+        <p className="text-gray-400 mt-3 max-w-2xl mx-auto">
+          Get ready to challenge yourself and join thousands of runners in these exciting marathon events. 
+          Sign up now before the tickets run out!
+        </p>
+      </div>
 
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {events.map((card, idx) => (
-          <div
-            className="relative rounded-2xl overflow-hidden h-80 shadow-xl hover:scale-105 transition-transform duration-300"
-            style={{
-              backgroundImage: `url(${card.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+      {/* Cards */}
+      <div className="w-full flex flex-col items-center gap-6">
+        {data.map((event, idx) => (
+          <Link
+            key={idx}
+            to={`/marathon/${event._id}`}
+            className="w-[95%] lg:w-[70%] flex flex-col lg:flex-row bg-black shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ease-in-out"
           >
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-5 text-white">
-              <p className="text-sm font-semibold text-blue-300">{card.category}</p>
-              <h3 className="text-lg font-bold mt-1">{card.title}</h3>
-              <p className="text-sm text-white/80 mt-2">{card.description}</p>
-              <p className="text-sm mt-4 text-white/60">{card.date}</p>
+            {/* Left - Image */}
+            <div className="w-full lg:w-1/5 h-48 lg:h-60 overflow-hidden">
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
+
+            {/* Middle - Info */}
+            <div className="w-full lg:w-2/5 px-4 lg:px-6 py-4 flex flex-col justify-center">
+              <p className="text-sm lightgreen font-semibold uppercase mb-1 flex items-center gap-2">
+                <FaMapMarkerAlt className="lightgreen" /> {event.location}
+              </p>
+              <h3 className="text-xl md:text-2xl lg:text-3xl text-white mb-2">{event.title}</h3>
+              <div className="flex flex-col md:flex-row md:flex-wrap gap-2 pt-3">
+                <p className="text-gray-300 text-sm md:text-md flex items-center gap-2">
+                  <FaTag className="lightgreen" /> Category: General
+                </p>
+                <p className="text-gray-300 text-sm md:text-md flex items-center gap-2">
+                  <FaClock className="lightgreen" /> Time: {new Date(event.regEnd).toLocaleTimeString(undefined, {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })} - 11 AM
+                </p>
+                <p className="text-gray-300 text-sm md:text-md flex items-center gap-2">
+                  <FaRoad className="lightgreen" /> Distance: {event.distance}
+                </p>
+              </div>
+            </div>
+
+            {/* Center - Date Divider */}
+            <div className="w-full lg:w-[20%] flex justify-center items-center relative py-4 lg:py-0 ">
+              <div className="hidden lg:block absolute left-0 top-0 bottom-0 border-l border-dashed border-gray-700"></div>
+              <div className="hidden lg:block absolute right-0 top-0 bottom-0 border-l border-dashed border-gray-700"></div>
+              <div className="lightgreen font-bold text-lg md:text-xl lg:text-2xl text-center leading-tight">
+                {new Date(event.regStart).toLocaleDateString(undefined, {
+                  month: 'short',
+                  day: 'numeric',
+                }).toUpperCase()}
+              </div>
+            </div>
+
+            {/* Right - CTA */}
+            <div className="w-full lg:w-1/5 flex items-center justify-center px-4 py-4 lg:py-0 ">
+              <button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-green-500 hover:text-white transition">
+                Buy Ticket
+              </button>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default UpcomingRun
+export default MarathonEvents;

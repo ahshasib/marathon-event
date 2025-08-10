@@ -11,7 +11,7 @@ const AllMarathonEvents = () => {
   const [data,setdata] = useState([]);
 
 useEffect(()=>{
-   fetch('https://assignment-11-server-ecru-five.vercel.app/marathon')
+   fetch(`${import.meta.env.VITE_API_URL}/marathon`)
   .then(res=>res.json())
   .then(json => setdata(json))
 },[])

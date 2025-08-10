@@ -25,7 +25,7 @@ const Leaderboard = () => {
       <div className=" absolute inset-0 bg-black bg-opacity-30 z-0" />
       <div className="text-neutral-content text-center py-10 px-3 sm:px-6 md:px-10 lg:px-14 w-full">
         <div className="w-full max-w-6xl mx-auto">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent mb-4">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4">
             Top Marathon Performers
           </h1>
           <p className="text-white font-medium text-sm md:text-base mb-8 max-w-2xl md:max-w-6xl mx-auto">
@@ -55,7 +55,7 @@ const Leaderboard = () => {
           >
             {dummyData.map((member, index) => (
               <SwiperSlide key={index}>
-                <div className="bg-gradient-to-br from-green-400 to-blue-500 text-white shadow-lg rounded-xl mt-4 p-4 flex flex-col items-center text-center hover:scale-105 hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px]">
+                <div className="  text-black shadow-lg  mt-4 p-4 flex flex-col items-center text-center hover:scale-105 hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px]" style={{ backgroundColor: '#E8FF02' }}>
                   <img
                     src={member.image}
                     alt={member.name}

@@ -12,7 +12,7 @@ function ThemeToggle() {
   };
 
   return (
-    <button onClick={toggleTheme} className="btn bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">
+    <button onClick={toggleTheme} className="btn bg-white text-black rounded-none px-6 py-2 text-lg border-none shadow-lg hover:bg-gray-400 hover:bg-opacity-40 transition">
       {theme === "light" ? "🌙" : "☀️"}
     </button>
   );

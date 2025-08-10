@@ -1,129 +1,176 @@
-import React, { use } from 'react'
-import { NavLink } from 'react-router'
-import { AuthContext } from '../context/Authcontext/AuthProvider'
-import Swal from 'sweetalert2'
-import ThemeToggle from './ThemeToggle'
+import React, { useContext, useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../context/Authcontext/AuthProvider';
+import Swal from 'sweetalert2';
+import ThemeToggle from './ThemeToggle';
 import { RiArrowDropDownLine } from "react-icons/ri";
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaFacebookF, FaInstagram, FaTwitter, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FiMenu, FiX } from 'react-icons/fi'; // hamburger and close icons
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Mobile menu toggle state
 
-    const { user, logout } = use(AuthContext)
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    const handleLogout = () => {
-        logout()
-            .then(() => {
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Logout Successful!',
+          text: `${user.email}!`,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
+      })
+      .catch(() => { });
+  };
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Logout Successful!',
-                    text: ` ${user.email}!`,
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                })
+  const menuItems = (
+    <>
+      <li>
+        <NavLink 
+          to="/" 
+          className="text-white text-lg md:text-xl" 
+          onClick={() => setMobileMenuOpen(false)} // close menu on click
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink 
+          to="/allmarathon" 
+          className="text-white text-lg md:text-xl"
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          Marathons
+        </NavLink>
+      </li>
+      {user && (
+        <li className="dropdown dropdown-end relative">
+          <label 
+            tabIndex={0} 
+            className="flex items-center gap-1 text-white text-lg md:text-xl cursor-pointer select-none"
+          >
+            Dashboard <RiArrowDropDownLine />
+          </label>
+          <ul 
+            tabIndex={0} 
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 absolute right-0 mt-2"
+          >
+            <li><NavLink to="/addmarathon" className="text-black" onClick={() => setMobileMenuOpen(false)}>Add Marathon</NavLink></li>
+            <li><NavLink to="/allmarathon" className="text-black" onClick={() => setMobileMenuOpen(false)}>All-Marathons-Events</NavLink></li>
+            <li><NavLink to="/mymarathonlist" className="text-black" onClick={() => setMobileMenuOpen(false)}>My Marathon List</NavLink></li>
+            <li><NavLink to="/myApplications" className="text-black" onClick={() => setMobileMenuOpen(false)}>My Application List</NavLink></li>
+          </ul>
+        </li>
+      )}
+    </>
+  );
 
-            }).catch((error) => {
-                // An error happened.
-            });
-    }
+  const buttonClasses = "btn bg-white text-black rounded-none px-6 py-2 text-lg border-none shadow-lg hover:bg-gray-400 hover:bg-opacity-40 transition";
 
-
-
-    const menuItems = (
-        <>
-            <li><NavLink to="/" className="font-bold">Home</NavLink></li>
-            <li><NavLink to="/allmarathon" className="font-bold">Marathons</NavLink></li>
-            {user && <>
-                <li className="dropdown dropdown-end">
-                    <label tabIndex={0} className=" font-bold">Dashboard <RiArrowDropDownLine /></label>
-                    <ul tabIndex={0} className="font-bold dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><NavLink to="/addmarathon">Add Marathon</NavLink></li>
-                        <li><NavLink to="/allmarathon">All-Marathons-Events</NavLink></li>
-                        
-                        <li><NavLink to="/mymarathonlist">My Marathon List</NavLink></li>
-                        <li><NavLink to="/myApplications">My Application List</NavLink></li>
-                    </ul>
-                </li>
-            </>}
-        </>
-    );
-
-
-    return (
-        <div className='bg-gradient-to-r from-green-400 to-blue-500 shadow-sm md:py-2 fixed top-0 left-0 w-full z-50'>
-            <div className="navbar w-11/12 mx-auto">
-                <div className="navbar-start">
-                    <NavLink to="/" className="flex items-center gap-2"> 
-                    <img src="./cardio.png" alt="" className='w-10 rounded-md'/>
-                    <h1 className='text-blue-500 font-bold text-2xl'>MilesMaster</h1></NavLink>
-                </div>
-
-                {/* Mobile dropdown*/}
-                <div className="navbar-end lg:hidden">
-                    <div>
-                            {
-                                user ? (<img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />) : ( <FaUserCircle size={22}/>)
-                            }
-                    </div>
-
-                    <div className="dropdown dropdown-end">
-
-                        <div tabIndex={0} role="button" className="btn btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                                    d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </div>
-
-                           
-
-                        <ul tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow space-y-3">
-                            {menuItems}
-                            {
-                                user ? (
-                                    <>
-                                        <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
-                                        <li><button onClick={handleLogout} className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Logout</button></li>
-                                    </>
-                                ) : (
-                                    <>
-                                        <li><NavLink to="/login" className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Login</NavLink></li>
-                                        <li><NavLink to="/register" className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Register</NavLink></li>
-                                    </>
-                                )
-                            }
-                        </ul>
-                    </div>
-                </div>
-
-                {/* Desktop Menu */}
-                <div className="navbar-end hidden lg:flex gap-5">
-                    <ul className="menu menu-horizontal px-1">
-                        {menuItems}
-                    </ul>
-
-                    {
-                        user ? (
-                            <>
-                                <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
-                                <button onClick={handleLogout} className="btn btn-sm bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Logout</button>
-                            </>
-                        ) : (
-                            <>
-                            <FaUserCircle size={24}/>
-                                <NavLink to="/login" className="btn btn-md bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Login</NavLink>
-                                <NavLink to="/register" className="btn btn-md bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg">Register</NavLink>
-                            </>
-                        )
-                    }
-
-                    <ThemeToggle />
-                </div>
-            </div>
+  return (
+    <div>
+      {/* Top Bar */}
+      <div className="text-black py-3 px-4 flex justify-between items-center text-sm" style={{ backgroundColor: '#E8FF02' }}>
+        {/* Left side */}
+        <div className="flex items-center gap-4">
+          <span className="flex items-center gap-2"><FaEnvelope /> support@milesmaster.com</span>
+          <span className="flex items-center gap-2"><FaPhoneAlt /> +880 1234-567890</span>
         </div>
-    )
-}
+        {/* Right side */}
+        <div className="flex items-center gap-5">
+          <a href="#" className="hover:text-blue-600"><FaFacebookF /></a>
+          <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
+          <a href="#" className="hover:text-sky-400"><FaTwitter /></a>
+        </div>
+      </div>
 
-export default Navbar
+      {/* Main Navbar */}
+      <div
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out transform
+          ${isScrolled
+            ? 'bg-gray-900 bg-opacity-70 shadow-lg scale-100'
+            : 'bg-transparent shadow-none scale-95 opacity-90 top-10'
+          } text-white`}
+      >
+        <div className="navbar w-11/12 mx-auto py-2 flex items-center justify-between">
+          <div className="navbar-start flex-1">
+            <NavLink to="/" className="flex items-center gap-2">
+              <img src="./cardio.png" alt="logo" className="w-10 rounded-md" />
+              <h1 className=" text-3xl text-white">MilesMaster</h1>
+            </NavLink>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="navbar-center hidden lg:flex flex-1 justify-center">
+            <ul className="menu menu-horizontal px-1 gap-8">{menuItems}</ul>
+          </div>
+
+          {/* Desktop Right Side */}
+          <div className="navbar-end hidden lg:flex gap-5 flex-1 justify-end items-center">
+            {user ? (
+              <>
+                <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
+                <button onClick={handleLogout} className={buttonClasses}>Logout</button>
+              </>
+            ) : (
+              <>
+                <FaUserCircle size={28} className="text-white" />
+                <NavLink to="/login" className={buttonClasses}>Login</NavLink>
+                <NavLink to="/register" className={buttonClasses}>Register</NavLink>
+              </>
+            )}
+            <ThemeToggle />
+          </div>
+
+          {/* Mobile Hamburger Menu Button */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              className="text-white text-3xl focus:outline-none"
+            >
+              {mobileMenuOpen ? <FiX /> : <FiMenu />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden bg-gray-900 bg-opacity-90 w-full py-4 shadow-lg">
+            <ul className="flex flex-col gap-4 px-6">
+              {menuItems}
+              {user ? (
+                <>
+                  <li className="flex items-center gap-3">
+                    <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
+                    <button onClick={() => { handleLogout(); setMobileMenuOpen(false); }} className={buttonClasses}>
+                      Logout
+                    </button>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li><NavLink to="/login" className={buttonClasses} onClick={() => setMobileMenuOpen(false)}>Login</NavLink></li>
+                  <li><NavLink to="/register" className={buttonClasses} onClick={() => setMobileMenuOpen(false)}>Register</NavLink></li>
+                </>
+              )}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;

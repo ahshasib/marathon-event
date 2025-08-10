@@ -1,48 +1,73 @@
-import React from 'react';
-import { BookOpen, Dumbbell, HeartPulse, Flame } from 'lucide-react';
+import React from "react";
+import { CheckCircle, Timer, Droplet, Heart, Shield } from "lucide-react";
 
-const resources = [
+const rules = [
   {
-    title: "Beginner Training Plan",
-    desc: "Get started with a 4-week plan tailored for new runners preparing for their first marathon.",
-    icon: <Dumbbell className="w-8 h-8 text-blue-500" />,
+    icon: <CheckCircle className="w-8 h-8 text-green-500" />,
+    title: "Follow the Route",
+    desc: "Stay on the marked path at all times to ensure safety and accurate timing.",
   },
   {
-    title: "Nutrition Tips",
-    desc: "Discover what to eat before, during, and after your run to stay energized and recover fast.",
-    icon: <Flame className="w-8 h-8 text-orange-500" />,
+    icon: <Timer className="w-8 h-8 text-blue-500" />,
+    title: "Pace Yourself",
+    desc: "Maintain a steady pace to avoid early exhaustion and finish strong.",
   },
   {
-    title: "Injury Prevention",
-    desc: "Learn how to stretch properly and avoid common injuries with expert-backed guidance.",
-    icon: <HeartPulse className="w-8 h-8 text-red-500" />,
+    icon: <Droplet className="w-8 h-8 text-cyan-500" />,
+    title: "Stay Hydrated",
+    desc: "Use water stations along the route and listen to your body’s needs.",
   },
   {
-    title: "Motivational Reads",
-    desc: "Read inspiring stories and advice from seasoned marathoners to keep you going strong.",
-    icon: <BookOpen className="w-8 h-8 text-blue-500" />,
+    icon: <Heart className="w-8 h-8 text-red-500" />,
+    title: "Medical Awareness",
+    desc: "Seek immediate assistance if you feel dizzy, overheated, or in pain.",
+  },
+  {
+    icon: <Shield className="w-8 h-8 text-yellow-500" />,
+    title: "Respect Others",
+    desc: "Be mindful of fellow runners and volunteers throughout the event.",
   },
 ];
 
 const TrainingResources = () => {
   return (
-    <section className="py-16 px-4 bg-base-100 text-base-content">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-          Training & Resources
-        </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto mb-10">
-          Get the tools and knowledge you need to train smart and cross the finish line strong.
-        </p>
+    <section className="py-16 px-4 bg-gray-900 text-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        {/* Left Side - Overlapping Images */}
+        <div className="relative flex justify-center lg:justify-start">
+          {/* Top Image (smaller now) */}
+          <img
+            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
+            alt="Marathon runners"
+            className="rounded-2xl shadow-lg w-64 h-44 object-cover transform hover:scale-105 transition duration-500"
+          />
+          {/* Bottom Image (bigger now) */}
+          <img
+            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
+            alt="Running shoes"
+            className="rounded-2xl shadow-lg w-96 h-64 object-cover absolute top-20 left-28 lg:left-40 border-4 border-gray-900 transform hover:scale-105 transition duration-500"
+          />
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {resources.map((item, i) => (
-            <div key={i} className="bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl shadow-md p-6 text-left hover:shadow-xl transition">
-              <div className="mb-4">{item.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-              <p className="text-sm text-gray-600">{item.desc}</p>
-            </div>
-          ))}
+        {/* Right Side - Rules */}
+        <div>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+            Marathon Rules & Guidelines
+          </h2>
+          <p className="text-gray-300 mb-6">
+            Ensure a safe and fair race for everyone by following these important guidelines during the marathon.
+          </p>
+          <ul className="space-y-5">
+            {rules.map((rule, idx) => (
+              <li key={idx} className="flex items-start gap-4">
+                <div className="flex-shrink-0">{rule.icon}</div>
+                <div>
+                  <h3 className="text-lg font-semibold">{rule.title}</h3>
+                  <p className="text-gray-400 text-sm">{rule.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

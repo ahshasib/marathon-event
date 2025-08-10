@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,5 +6,14 @@
 @plugin "daisyui"; */
 
 .active{
-    color:red
+    color:#E8FF02;
 }
+.oswald{
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+
+  .lightgreen{
+    color:#E8FF02;
+  }

@@ -58,14 +58,14 @@ const router = createBrowserRouter(
             },
             {
                 path:"/marathon/:id",
-                loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app/marathon/${params.id}`),
+                loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/marathon/${params.id}`),
                 element:<PrivetRout>
                             <MarathonDetailsPage></MarathonDetailsPage>
                         </PrivetRout>
             },
             {
                 path:"/applymarathon/:id",
-                loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app/marathon/${params.id}`),
+                loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/marathon/${params.id}`),
                 element:<PrivetRout>
                             <ApplyMarathon></ApplyMarathon>
                         </PrivetRout>

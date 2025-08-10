@@ -1,124 +1,72 @@
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Loading from './Loading';
-import { Link } from 'react-router';
-
-// const events = [
-//   {
-//     title: "City Sprint Marathon",
-//     regStart: "2025-06-01",
-//     regEnd: "2025-06-15",
-//     marathonDate: "2025-07-01",
-//     location: "New York City",
-//     distance: "10km",
-//     description: "A fast-paced city marathon for all levels.",
-//     image: "https://i.ibb.co/5gFhJGhs/happy-marathon-runner-showing-smart-watch-her-friend-before-race-nature.jpg",
-//   },
-//   {
-//     title: "Beachside Challenge",
-//     regStart: "2025-06-05",
-//     regEnd: "2025-06-20",
-//     marathonDate: "2025-07-10",
-//     location: "California Coast",
-//     distance: "21km",
-//     description: "Run along scenic beaches and ocean breeze.",
-//     image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
-//   },
-//   {
-//     title: "Mountain Trail Marathon",
-//     regStart: "2025-06-03",
-//     regEnd: "2025-06-18",
-//     marathonDate: "2025-07-05",
-//     location: "Colorado Peaks",
-//     distance: "42km",
-//     description: "Test your limits on a rugged mountain trail.",
-//     image: "https://i.ibb.co/gMXgyX0F/healthy-lifestyle-running-outdoors.jpg",
-//   },
-//   {
-//     title: "Urban Night Run",
-//     regStart: "2025-06-08",
-//     regEnd: "2025-06-25",
-//     marathonDate: "2025-07-15",
-//     location: "Tokyo, Japan",
-//     distance: "15km",
-//     description: "Experience the thrill of running through a neon city at night.",
-//     image: "https://i.ibb.co/WWRNbjvw/happy-senior-running-through-finish-line.jpg",
-//   },
-//   {
-//     title: "Desert Ultra",
-//     regStart: "2025-06-10",
-//     regEnd: "2025-06-30",
-//     marathonDate: "2025-07-20",
-//     location: "Sahara Desert",
-//     distance: "50km",
-//     description: "A challenging endurance race through the sands.",
-//     image: "https://i.ibb.co/5gFhJGhs/happy-marathon-runner-showing-smart-watch-her-friend-before-race-nature.jpg",
-//   },
-//   {
-//     title: "Riverbank Relay",
-//     regStart: "2025-06-12",
-//     regEnd: "2025-07-01",
-//     marathonDate: "2025-07-25",
-//     location: "Amsterdam, Netherlands",
-//     distance: "5km x 4",
-//     description: "Team relay marathon across beautiful canals.",
-//     image: "https://i.ibb.co/gMXgyX0F/healthy-lifestyle-running-outdoors.jpg",
-//   },
-// ];
-
-
+import { Link } from 'react-router-dom';
 
 const MarathonEvents = () => {
-const [data,setdata] = useState([]);
+  const [data, setData] = useState([]);
 
-useEffect(()=>{
-   fetch('https://assignment-11-server-ecru-five.vercel.app/marathon/latest')
-  .then(res=>res.json())
-  .then(json => setdata(json))
-},[])
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/marathon/latest`)
+      .then(res => res.json())
+      .then(json => setData(json));
+  }, []);
 
-if(!data.length) return <Loading></Loading>
-
+  if (!data.length) return <Loading />;
 
   return (
-    <div>
- <div className="px-4 py-12 max-w-7xl mx-auto">
-      <h2 className="text-3xl text-center pb-4 md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">🏃‍♂️ Marathon Events</h2>
-      <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+<div className='bg-gray-900 py-20'>
+<div className='text-center'>
+      <p className='text-xl lightgreen py-3'>You have to Check</p>
+      <h2 className='text-4xl md:text-6xl text-white'>All Marathon Events</h2>
+      <p className='text-sm text-white w-[80%] mx-auto pt-2'>Discover upcoming marathons, join the community, and take your running journey to the next level!</p>
+    </div>
+
+    <div className="w-[80%] mx-auto px-4 py-12 flex flex-col lg:flex-row items-stretch gap-8 ">
+
+    
+
+      {/* Left Side: Dynamic Ad Section */}
+      <div className="w-full lg:w-2/5 bg-gradient-to-br from-purple-600 to-indigo-700 text-white p-6  shadow-lg flex flex-col justify-center">
+        <h2 className="text-2xl font-bold mb-4">Special Marathon Offer</h2>
+        <p className="mb-6">
+          Join now and get exclusive benefits, training guides, and merchandise discounts!
+        </p>
+        <button className="bg-white text-indigo-700 font-semibold py-2 px-4 rounded hover:bg-gray-200 transition">
+          Learn More
+        </button>
+      </div>
+
+      {/* Right Side: Cards grid */}
+      <div className="w-full lg:w-3/4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8">
         {data.map((event, idx) => (
-          <div
+          <Link
             key={idx}
-            className="card shadow-xl bg-gradient-to-br from-white to-gray-100 border border-gray-200 hover:scale-[1.03] transition-transform hover:shadow-2xl duration-300"
+            to={`/marathon/${event._id}`}
+            className="relative group block h-[50vh] overflow-hidden shadow-lg rounded-none"
           >
-            <figure className="relative overflow-hidden">
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-52 object-cover transition-transform duration-300 hover:scale-105"
-              />
-              <div className="absolute top-2 left-2 badge badge-primary text-white">{event.distance}</div>
-            </figure>
-            <div className="card-body space-y-2">
-              <h3 className="text-xl font-bold text-gray-800">{event.title}</h3>
-              <p className="text-sm text-gray-600">
-                📍 <strong>Location:</strong> {event.location}
+            <img
+              src={event.image}
+              alt={event.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6">
+              <h3 className="text-white font-extrabold text-xl md:text-2xl leading-tight">
+                {event.title.toUpperCase()}
+              </h3>
+              <p className="text-gray-200 mt-2 text-sm md:text-base line-clamp-3">
+                {event.description}
               </p>
-              <p className="text-sm text-gray-600">
-                🗓️ <strong>Marathon:</strong> {event.marathonDate}
-              </p>
-              <p className="text-sm text-gray-600">
-                📝 <strong>Registration:</strong> {event.regStart} to {event.regEnd}
-              </p>
-              <p className="text-gray-700 text-sm line-clamp-3">{event.description}</p>
-              <div className="mt-3">
-               <Link to={`/marathon/${event._id}`}> <button className="btn bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg w-full">See Details</button></Link>
-              </div>
+              <button className="mt-4 bg-black text-white font-semibold px-5 py-2 inline-block w-max">
+                JOIN NOW!
+              </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
     </div>
-  )
-}
+  );
+};
 
-export default MarathonEvents
+export default MarathonEvents;
