@@ -31,27 +31,23 @@ const rules = [
 
 const TrainingResources = () => {
   return (
-    <section className="py-16 px-4 bg-gray-900 text-white">
+    <section className="py-32 px-4 bg-black text-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Left Side - Overlapping Images */}
         <div className="relative flex justify-center lg:justify-start">
           {/* Top Image (smaller now) */}
           <img
-            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
+            src="/runner1.png"
             alt="Marathon runners"
-            className="rounded-2xl shadow-lg w-64 h-44 object-cover transform hover:scale-105 transition duration-500"
+            className=" w-[90%] h-full object-cover transform hover:scale-105 transition duration-500"
           />
           {/* Bottom Image (bigger now) */}
-          <img
-            src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80"
-            alt="Running shoes"
-            className="rounded-2xl shadow-lg w-96 h-64 object-cover absolute top-20 left-28 lg:left-40 border-4 border-gray-900 transform hover:scale-105 transition duration-500"
-          />
+          
         </div>
 
         {/* Right Side - Rules */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-3xl md:text-7xl font-semibold mb-4 lightgreen">
             Marathon Rules & Guidelines
           </h2>
           <p className="text-gray-300 mb-6">
@@ -68,8 +64,14 @@ const TrainingResources = () => {
               </li>
             ))}
           </ul>
+          <div className="m-12">
+          <button className="bg-white text-black font-bold py-2 px-8  hover:bg-gray-800 hover:text-white transition">
+                Book Now
+            </button>
+          </div>
         </div>
       </div>
+      
     </section>
   );
 };

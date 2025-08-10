@@ -19,7 +19,7 @@ const Leaderboard = () => {
 
   return (
     <div
-      className="relative mt-16 min-h-[60vh] bg-cover bg-center "
+      className="relative min-h-[60vh] bg-cover bg-center "
       style={{ backgroundImage: "url(run.jpg)" }}
     >
       <div className=" absolute inset-0 bg-black bg-opacity-30 z-0" />
@@ -55,7 +55,7 @@ const Leaderboard = () => {
           >
             {dummyData.map((member, index) => (
               <SwiperSlide key={index}>
-                <div className="  text-black shadow-lg  mt-4 p-4 flex flex-col items-center text-center hover:scale-105 hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px]" style={{ backgroundColor: '#E8FF02' }}>
+                <div className="  text-black shadow-lg  mt-10 p-4 flex flex-col items-center text-center hover:scale-105 hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px]" style={{ backgroundColor: '#E8FF02' }}>
                   <img
                     src={member.image}
                     alt={member.name}

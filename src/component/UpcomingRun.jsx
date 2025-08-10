@@ -15,7 +15,7 @@ const MarathonEvents = () => {
   if (!data.length) return <Loading />;
 
   return (
-    <div className="bg-gray-800 py-10">
+    <div className="bg-black py-10">
       {/* Section Header */}
       <div className="text-center mb-10">
         <p className="lightgreen uppercase tracking-widest text-sm font-semibold">
@@ -36,7 +36,7 @@ const MarathonEvents = () => {
           <Link
             key={idx}
             to={`/marathon/${event._id}`}
-            className="w-[95%] lg:w-[70%] flex flex-col lg:flex-row bg-black shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 ease-in-out"
+            className="w-[95%] shadow-lime-900 shadow-2xl lg:w-[70%] flex flex-col lg:flex-row bg-black overflow-hidden hover:shadow-2xl transition-shadow duration-300 ease-in-out"
           >
             {/* Left - Image */}
             <div className="w-full lg:w-1/5 h-48 lg:h-60 overflow-hidden">
@@ -83,8 +83,8 @@ const MarathonEvents = () => {
 
             {/* Right - CTA */}
             <div className="w-full lg:w-1/5 flex items-center justify-center px-4 py-4 lg:py-0 ">
-              <button className="bg-white text-black font-bold py-2 px-6 rounded hover:bg-green-500 hover:text-white transition">
-                Buy Ticket
+              <button className="bg-white text-black font-bold py-2 px-6  hover:bg-green-500 hover:text-white transition">
+                Book Now
               </button>
             </div>
           </Link>

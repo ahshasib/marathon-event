@@ -7,6 +7,7 @@ import TrainingResources from '../component/TrainingResources'
 import Leaderboard from '../component/Leaderboard'
 import { Helmet } from 'react-helmet-async';
 import CounterSection from '../component/CounterSection'
+import VirtualRun from '../component/VirtualRun'
 
 const Home = () => {
 
@@ -34,6 +35,9 @@ const Home = () => {
     </div>
     <div>
       <Leaderboard></Leaderboard>
+    </div>
+    <div>
+      <VirtualRun></VirtualRun>
     </div>
     </>
   )
