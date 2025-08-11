@@ -12,6 +12,8 @@ import MyMarathonsList from '../pages/MyMarathonsList';
 import ApplyMarathon from '../pages/ApplyMarathon';
 import MyApplications from '../pages/MyApplications';
 import Error from '../pages/Error';
+import BlogPage from '../pages/BlogPage';
+import MemberInfo from '../pages/MemberInfo';
 
 
 const router = createBrowserRouter(
@@ -31,6 +33,14 @@ const router = createBrowserRouter(
             {
                 path:"/register",
                 element:<Register></Register>
+            },
+            {
+                path:"/blog",
+                element:<BlogPage></BlogPage>
+            },
+            {
+                path:"/members",
+                element:<MemberInfo></MemberInfo>
             },
             {
                 path:"/addmarathon",
@@ -77,6 +87,7 @@ const router = createBrowserRouter(
                             <MyApplications></MyApplications>
                         </PrivetRout>
             },
+            
 
 
             ]

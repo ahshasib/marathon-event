@@ -31,7 +31,7 @@ const rules = [
 
 const TrainingResources = () => {
   return (
-    <section className="py-32 px-4 bg-black text-white">
+    <section className="py-32 px-4 bg-gray-50 text-gray-900">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Left Side - Overlapping Images */}
         <div className="relative flex justify-center lg:justify-start">
@@ -47,10 +47,10 @@ const TrainingResources = () => {
 
         {/* Right Side - Rules */}
         <div>
-          <h2 className="text-3xl md:text-7xl font-semibold mb-4 lightgreen">
+          <h2 className="text-3xl md:text-7xl font-semibold mb-4 text-gray-900">
             Marathon Rules & Guidelines
           </h2>
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-500 mb-6">
             Ensure a safe and fair race for everyone by following these important guidelines during the marathon.
           </p>
           <ul className="space-y-5">
@@ -59,13 +59,13 @@ const TrainingResources = () => {
                 <div className="flex-shrink-0">{rule.icon}</div>
                 <div>
                   <h3 className="text-lg font-semibold">{rule.title}</h3>
-                  <p className="text-gray-400 text-sm">{rule.desc}</p>
+                  <p className="text-gray-500 text-sm">{rule.desc}</p>
                 </div>
               </li>
             ))}
           </ul>
           <div className="m-12">
-          <button className="bg-white text-black font-bold py-2 px-8  hover:bg-gray-800 hover:text-white transition">
+          <button className="bg-gray-900 text-white font-bold py-2 px-8  hover:bg-gray-800 hover:text-white transition">
                 Book Now
             </button>
           </div>

@@ -11,8 +11,6 @@ import VirtualRun from '../component/VirtualRun'
 
 const Home = () => {
 
-  
-
   return (
     <>
      <Helmet>

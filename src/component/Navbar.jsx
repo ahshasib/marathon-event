@@ -10,7 +10,7 @@ import { FiMenu, FiX } from 'react-icons/fi'; // hamburger and close icons
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Mobile menu toggle state
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,40 +37,20 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <NavLink 
-          to="/" 
-          className="text-white text-lg md:text-xl" 
-          onClick={() => setMobileMenuOpen(false)} // close menu on click
-        >
-          Home
-        </NavLink>
+        <NavLink to="/" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Home</NavLink>
       </li>
       <li>
-        <NavLink 
-          to="/allmarathon" 
-          className="text-white text-lg md:text-xl"
-          onClick={() => setMobileMenuOpen(false)}
-        >
-          Marathons
-        </NavLink>
+        <NavLink to="/allmarathon" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Marathons</NavLink>
+      </li>
+      <li>
+        <NavLink to="/blog" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Blogs</NavLink>
+      </li>
+      <li>
+        <NavLink to="/members" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Members</NavLink>
       </li>
       {user && (
-        <li className="dropdown dropdown-end relative">
-          <label 
-            tabIndex={0} 
-            className="flex items-center gap-1 text-white text-lg md:text-xl cursor-pointer select-none"
-          >
-            Dashboard <RiArrowDropDownLine />
-          </label>
-          <ul 
-            tabIndex={0} 
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 absolute right-0 mt-2"
-          >
-            <li><NavLink to="/addmarathon" className="text-black" onClick={() => setMobileMenuOpen(false)}>Add Marathon</NavLink></li>
-            <li><NavLink to="/allmarathon" className="text-black" onClick={() => setMobileMenuOpen(false)}>All-Marathons-Events</NavLink></li>
-            <li><NavLink to="/mymarathonlist" className="text-black" onClick={() => setMobileMenuOpen(false)}>My Marathon List</NavLink></li>
-            <li><NavLink to="/myApplications" className="text-black" onClick={() => setMobileMenuOpen(false)}>My Application List</NavLink></li>
-          </ul>
+        <li>
+          <NavLink to="/members" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Dashboard</NavLink> 
         </li>
       )}
     </>
@@ -82,12 +62,10 @@ const Navbar = () => {
     <div>
       {/* Top Bar */}
       <div className="text-black py-3 px-4 flex justify-between items-center text-sm" style={{ backgroundColor: '#E8FF02' }}>
-        {/* Left side */}
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2"><FaEnvelope /> support@milesmaster.com</span>
           <span className="flex items-center gap-2"><FaPhoneAlt /> +880 1234-567890</span>
         </div>
-        {/* Right side */}
         <div className="flex items-center gap-5">
           <a href="#" className="hover:text-blue-600"><FaFacebookF /></a>
           <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
@@ -104,20 +82,24 @@ const Navbar = () => {
           } text-white`}
       >
         <div className="navbar w-11/12 mx-auto py-2 flex items-center justify-between">
-          <div className="navbar-start flex-1">
+
+          {/* Logo section 10% */}
+          <div className="navbar-start flex-shrink-0" style={{ width: '10%' }}>
             <NavLink to="/" className="flex items-center gap-2">
               <img src="./cardio.png" alt="logo" className="w-10 rounded-md" />
-              <h1 className=" text-3xl text-white">MilesMaster</h1>
+              <h1 className="text-3xl text-white">MilesMaster</h1>
             </NavLink>
           </div>
 
-          {/* Desktop Menu */}
-          <div className="navbar-center hidden lg:flex flex-1 justify-center">
-            <ul className="menu menu-horizontal px-1 gap-8">{menuItems}</ul>
+          {/* Menu items center 70%, flex to center */}
+          <div className="navbar-center hidden md:flex" style={{ width: '70%', justifyContent: 'center' }}>
+            <ul className="menu menu-horizontal px-1 gap-5">
+              {menuItems}
+            </ul>
           </div>
 
-          {/* Desktop Right Side */}
-          <div className="navbar-end hidden lg:flex gap-5 flex-1 justify-end items-center">
+          {/* Login/logout + theme toggle 20% */}
+          <div className="navbar-end hidden md:flex items-center justify-end gap-5 flex-shrink-0" style={{ width: '20%' }}>
             {user ? (
               <>
                 <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
@@ -133,8 +115,8 @@ const Navbar = () => {
             <ThemeToggle />
           </div>
 
-          {/* Mobile Hamburger Menu Button */}
-          <div className="lg:hidden flex items-center">
+          {/* Mobile Hamburger Menu */}
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
@@ -143,6 +125,7 @@ const Navbar = () => {
               {mobileMenuOpen ? <FiX /> : <FiMenu />}
             </button>
           </div>
+
         </div>
 
         {/* Mobile Menu */}
@@ -151,14 +134,12 @@ const Navbar = () => {
             <ul className="flex flex-col gap-4 px-6">
               {menuItems}
               {user ? (
-                <>
-                  <li className="flex items-center gap-3">
-                    <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
-                    <button onClick={() => { handleLogout(); setMobileMenuOpen(false); }} className={buttonClasses}>
-                      Logout
-                    </button>
-                  </li>
-                </>
+                <li className="flex items-center gap-3">
+                  <img src={user.photoURL || '/avatar.png'} alt="User" className="w-8 h-8 rounded-full" />
+                  <button onClick={() => { handleLogout(); setMobileMenuOpen(false); }} className={buttonClasses}>
+                    Logout
+                  </button>
+                </li>
               ) : (
                 <>
                   <li><NavLink to="/login" className={buttonClasses} onClick={() => setMobileMenuOpen(false)}>Login</NavLink></li>

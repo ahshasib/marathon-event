@@ -25,7 +25,7 @@ const rules = [
 
 const VirtualRun = () => {
   return (
-    <section className="py-16 px-4 bg-white text-white">
+    <section className="py-28 px-4 bg-white text-white">
       <div className="max-w-7xl mx-auto ">
         <span className="lightgreen drop-shadow-sm text-xl">Let's Start a New Journy</span>
        <div className="flex gap-20 py-5 items-center">
@@ -40,7 +40,7 @@ const VirtualRun = () => {
        </div>
 
         {/* Flex Boxes */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-5">
           {rules.map((rule, idx) => (
             <motion.div
               key={idx}

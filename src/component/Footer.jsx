@@ -1,34 +1,38 @@
 import React from 'react'
-import { NavLink } from 'react-router'
+import { Link } from 'react-router'
+import ReviewSection from './ReviewSection'
 
 const Footer = () => {
     return (
-        <div>
-            <footer class="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+        <div className="relative pt-20 bg-gray-800 mt-[70%] md:mt-[17%]">
+            <div className="absolute -top-32 w-full flex justify-center px-4">
+                <ReviewSection />
+            </div>
+            <footer class="footer sm:footer-horizontal text-white p-10 mt-52 md:mt-40">
                 <nav>
-                    <h6 class="footer-title">Fiend Marathon</h6>
-                    <NavLink to="/" >Home</NavLink>
-                    <NavLink to="/allmarathon" >Marathons</NavLink>
-                    <NavLink to="/mymarathonlist">My Marathon List</NavLink>
-                    <NavLink to="/login">Login</NavLink>
-                                       
+                    <h6 class=" font-extrabold lightgreen">Fiend Marathon</h6>
+                    <Link to="/" >Home</Link>
+                    <Link to="/allmarathon" >Marathons</Link>
+                    <Link to="/mymarathonlist">My Marathon List</Link>
+                    <Link to="/login">Login</Link>
+
                 </nav>
                 <nav>
-                    <h6 class="footer-title">Pages</h6>
-                    <NavLink to="/addmarathon">Add Marathon</NavLink>
-                    <NavLink to="/allmarathon">All-Marathons-Events</NavLink>
-                    <NavLink to="/mymarathonlist">My Marathon List</NavLink>
-                    <NavLink to="/register" >Register</NavLink>
-                    
+                    <h6 class="font-extrabold lightgreen">Pages</h6>
+                    <Link to="/addmarathon">Add Marathon</Link>
+                    <Link to="/allmarathon">All-Marathons-Events</Link>
+                    <Link to="/mymarathonlist">My Marathon List</Link>
+                    <Link to="/register" >Register</Link>
+
                 </nav>
                 <nav>
-                    <h6 class="footer-title">Legal</h6>
+                    <h6 class="font-extrabold lightgreen">Legal</h6>
                     <a class="link link-hover" href='#'>Terms of use</a>
                     <a class="link link-hover" href='#'>Privacy policy</a>
                     <a class="link link-hover" href='#'>Cookie policy</a>
                 </nav>
             </footer>
-            <footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
+            <footer class="footer text-base-content text-white border-base-300 border-t px-10 py-4">
                 <aside class="grid-flow-col items-center">
                     <svg
                         width="24"
@@ -44,7 +48,7 @@ const Footer = () => {
                     <p>
                         Marathon BD.
                         <br />
-                         since 1992
+                        since 1992
                     </p>
                 </aside>
                 <nav class="md:place-self-center md:justify-self-end">

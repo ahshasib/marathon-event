@@ -17,3 +17,8 @@
   .lightgreen{
     color:#E8FF02;
   }
+
+  /* global.css বা index.css এ */
+html {
+  scroll-behavior: smooth;
+}
