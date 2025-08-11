@@ -15,6 +15,8 @@ import Error from '../pages/Error';
 import BlogPage from '../pages/BlogPage';
 import MemberInfo from '../pages/MemberInfo';
 import DashboardLayout from '../pages/DashboardLayout';
+import Overview from '../pages/Overview';
+import UserDataForm from '../pages/UserDataForm';
 
 
 const router = createBrowserRouter(
@@ -99,6 +101,18 @@ const router = createBrowserRouter(
                     path:"/dashboard/addmarathon",
                     element:<PrivetRout>
                                 <AddMarathon></AddMarathon>
+                            </PrivetRout>
+                },
+                {
+                    index:true,
+                    element:<PrivetRout>
+                                <Overview></Overview>
+                            </PrivetRout>
+                },
+                {
+                    path:"/dashboard/userDataForm",
+                    element:<PrivetRout>
+                                <UserDataForm></UserDataForm>
                             </PrivetRout>
                 },
             ]
