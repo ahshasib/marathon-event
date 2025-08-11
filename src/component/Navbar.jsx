@@ -50,7 +50,7 @@ const Navbar = () => {
       </li>
       {user && (
         <li>
-          <NavLink to="/members" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Dashboard</NavLink> 
+          <NavLink to="/dashboard" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Dashboard</NavLink> 
         </li>
       )}
     </>

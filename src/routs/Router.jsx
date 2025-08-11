@@ -14,6 +14,7 @@ import MyApplications from '../pages/MyApplications';
 import Error from '../pages/Error';
 import BlogPage from '../pages/BlogPage';
 import MemberInfo from '../pages/MemberInfo';
+import DashboardLayout from '../pages/DashboardLayout';
 
 
 const router = createBrowserRouter(
@@ -42,12 +43,7 @@ const router = createBrowserRouter(
                 path:"/members",
                 element:<MemberInfo></MemberInfo>
             },
-            {
-                path:"/addmarathon",
-                element:<PrivetRout>
-                            <AddMarathon></AddMarathon>
-                        </PrivetRout>
-            },
+            
             {
                 path:"/allmarathon",
                 element:<PrivetRout>
@@ -60,12 +56,7 @@ const router = createBrowserRouter(
             //                 <MarathonDetailsPage></MarathonDetailsPage>
             //             </PrivetRout>
             // },
-            {
-                path:"/mymarathonlist",
-                element:<PrivetRout>
-                            <MyMarathonsList></MyMarathonsList>
-                        </PrivetRout>
-            },
+            
             {
                 path:"/marathon/:id",
                 loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/marathon/${params.id}`),
@@ -80,16 +71,36 @@ const router = createBrowserRouter(
                             <ApplyMarathon></ApplyMarathon>
                         </PrivetRout>
             },
-            {
-                path:"/myApplications",
-                // loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app//marathon/${params.id}`),
-                element:<PrivetRout>
-                            <MyApplications></MyApplications>
-                        </PrivetRout>
-            },
+            
+           
             
 
 
+            ]
+        },
+        {
+            path: "/dashboard",
+            element: <DashboardLayout></DashboardLayout>,
+            children:[
+                {
+                    path:"/dashboard/myApplications",
+                    // loader:({params})=>fetch(`https://assignment-11-server-ecru-five.vercel.app//marathon/${params.id}`),
+                    element:<PrivetRout>
+                                <MyApplications></MyApplications>
+                            </PrivetRout>
+                },
+                {
+                    path:"/dashboard/mymarathonlist",
+                    element:<PrivetRout>
+                                <MyMarathonsList></MyMarathonsList>
+                            </PrivetRout>
+                },
+                {
+                    path:"/dashboard/addmarathon",
+                    element:<PrivetRout>
+                                <AddMarathon></AddMarathon>
+                            </PrivetRout>
+                },
             ]
         },
         {
