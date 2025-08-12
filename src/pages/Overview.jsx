@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  PieChart, Pie, Cell, BarChart, Bar, CartesianGrid, Legend
+  PieChart, Pie, BarChart, Bar, CartesianGrid, Legend
 } from "recharts";
 import { motion } from "framer-motion";
 import { FaRoad, FaTrophy, FaCalendarAlt, FaRunning } from "react-icons/fa";
+import { AuthContext } from "../context/Authcontext/AuthProvider";
 
 const Overview = () => {
+    const {user} = use(AuthContext)
   const fakeData = {
     lifetime: 350,
     longestRun: 42,
@@ -33,16 +35,21 @@ const Overview = () => {
   const [data, setData] = useState(fakeData);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/user-stats")
+    if (!user?.email) return; // যদি ইমেইল না থাকে, কিছুই করবো না
+  
+    fetch(`${import.meta.env.VITE_API_URL}/api/user-stats?userId=${encodeURIComponent(user.email)}`)
       .then(res => {
         if (!res.ok) throw new Error("API not found");
         return res.json();
       })
-      .then(stats => setData(stats))
-      .catch(() => setData(fakeData));
-  }, []);
-
-  const COLORS = ["#ff4b5c", "#ff9a76", "#1e90ff", "#00c49f"];
+      .then(stats => {
+        setData(stats);
+      })
+      .catch(err => {
+        console.error("Failed to fetch API:", err);
+        setData(fakeData);
+      });
+  }, [user?.email]);
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -55,7 +62,7 @@ const Overview = () => {
   };
 
   const StatDetails = ({ icon, label, value }) => (
-    <div className="flex  items-center gap-3 mt-4 bg-gradient-to-r from-gray-50 to-gray-100  p-3 shadow-inner">
+    <div className="flex items-center gap-3 mt-4 bg-gradient-to-r from-gray-50 to-gray-100 p-3 shadow-inner">
       <div className="text-2xl text-indigo-500">{icon}</div>
       <div>
         <p className="text-gray-500 text-sm">{label}</p>
@@ -65,57 +72,40 @@ const Overview = () => {
   );
 
   return (
-    <div className="p-6 bg-gradient-to-br  min-h-screen">
+    <div className="p-6 bg-gradient-to-br min-h-screen">
       <h1 className="text-4xl font-bold mb-4 text-gray-800">🏃 Overview</h1>
       <p className="mb-8 text-gray-600">Your running stats, trends, and progress.</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
         {/* Lifetime Distance */}
-       {/* Lifetime Distance */}
-<motion.div 
-  custom={0}
-  variants={cardVariants}
-  initial="hidden"
-  animate="visible"
-  whileHover="hover"
-  className="bg-gradient-to-br from-pink-50 to-pink-100 p-4 shadow-xl"
->
-  <h2 className="text-lg font-semibold mb-2 text-gray-700">Lifetime Distance</h2>
-  <ResponsiveContainer width="100%" height={250}>
-    <PieChart>
-      <defs>
-        <linearGradient id="lifetimeGradient" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ff4b5c" stopOpacity={0.9} />
-          <stop offset="50%" stopColor="#ff9a76" stopOpacity={0.85} />
-          <stop offset="100%" stopColor="#ffd93d" stopOpacity={0.9} />
-        </linearGradient>
-      </defs>
-      <Pie
-        data={[{ name: "Distance", value: data.lifetime }]}
-        dataKey="value"
-        outerRadius={90}
-        label
-        stroke="url(#lifetimeGradient)"
-        strokeWidth={6}
-        fill="url(#lifetimeGradient)"
-      />
-      <Tooltip />
-    </PieChart>
-  </ResponsiveContainer>
-  <StatDetails icon={<FaRoad />} label="Total Distance" value={`${data.lifetime} km`} />
-</motion.div>
-
+        <motion.div custom={0} variants={cardVariants} initial="hidden" animate="visible" whileHover="hover" className="bg-gradient-to-br from-pink-50 to-pink-100 p-4 shadow-xl">
+          <h2 className="text-lg font-semibold mb-2 text-gray-700">Lifetime Distance</h2>
+          <ResponsiveContainer width="100%" height={250}>
+            <PieChart>
+              <defs>
+                <linearGradient id="lifetimeGradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor="#ff4b5c" stopOpacity={0.9} />
+                  <stop offset="50%" stopColor="#ff9a76" stopOpacity={0.85} />
+                  <stop offset="100%" stopColor="#ffd93d" stopOpacity={0.9} />
+                </linearGradient>
+              </defs>
+              <Pie
+                data={[{ name: "Distance", value: data.lifetime }]}
+                dataKey="value"
+                outerRadius={90}
+                label
+                stroke="url(#lifetimeGradient)"
+                strokeWidth={6}
+                fill="url(#lifetimeGradient)"
+              />
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+          <StatDetails icon={<FaRoad />} label="Total Distance" value={`${data.lifetime} km`} />
+        </motion.div>
 
         {/* Longest Run */}
-        <motion.div 
-          custom={1}
-          variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          className="bg-gradient-to-br from-blue-50 to-green-50 p-4 shadow-xl "
-        >
+        <motion.div custom={1} variants={cardVariants} initial="hidden" animate="visible" whileHover="hover" className="bg-gradient-to-br from-blue-50 to-green-50 p-4 shadow-xl">
           <h2 className="text-lg font-semibold mb-2 text-gray-700">Longest Run</h2>
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={[{ name: "Longest Run", distance: data.longestRun }]}>
@@ -136,14 +126,7 @@ const Overview = () => {
         </motion.div>
 
         {/* Monthly Activity */}
-        <motion.div 
-          custom={2}
-          variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          className="bg-gradient-to-br from-yellow-50 to-orange-50 p-4 shadow-xl col-span-1 md:col-span-2 "
-        >
+        <motion.div custom={2} variants={cardVariants} initial="hidden" animate="visible" whileHover="hover" className="bg-gradient-to-br from-yellow-50 to-orange-50 p-4 shadow-xl col-span-1 md:col-span-2">
           <h2 className="text-lg font-semibold mb-2 text-gray-700">Monthly Activity</h2>
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={data.monthlyData}>
@@ -165,14 +148,7 @@ const Overview = () => {
         </motion.div>
 
         {/* Daily Runs */}
-        <motion.div 
-          custom={3}
-          variants={cardVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover="hover"
-          className="bg-gradient-to-br from-green-50 to-blue-50 p-4  shadow-xl col-span-1 md:col-span-2"
-        >
+        <motion.div custom={3} variants={cardVariants} initial="hidden" animate="visible" whileHover="hover" className="bg-gradient-to-br from-green-50 to-blue-50 p-4 shadow-xl col-span-1 md:col-span-2">
           <h2 className="text-lg font-semibold mb-2 text-gray-700">Daily Runs (This Month)</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data.dailyData}>
@@ -192,7 +168,6 @@ const Overview = () => {
           </ResponsiveContainer>
           <StatDetails icon={<FaRunning />} label="Avg per Day" value={`${(data.dailyData.reduce((a, b) => a + b.distance, 0) / data.dailyData.length).toFixed(1)} km`} />
         </motion.div>
-
       </div>
     </div>
   );

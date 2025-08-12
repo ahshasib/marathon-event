@@ -27,8 +27,9 @@ export default function UserDataForm({ onSubmit, initialData }) {
     setEnabledDays(dayOfMonth > 30 ? 30 : dayOfMonth);
 
     if (initialData && Array.isArray(initialData)) {
-      const mergedData = emptyDaily.map((item, idx) => {
-        const old = initialData[idx] || {};
+      // initialData থেকে full dailyData merge করে নাও (পুরোনো + নতুন)
+      const mergedData = emptyDaily.map((item) => {
+        const old = initialData.find(d => d.day === item.day) || {};
         return {
           day: item.day,
           distance: old.distance || 0,
@@ -49,7 +50,7 @@ export default function UserDataForm({ onSubmit, initialData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate non-negative distance & time (optional, but recommended)
+    // Validate non-negative distance & time
     for (let i = 0; i < enabledDays; i++) {
       if (dailyData[i].distance < 0 || dailyData[i].time < 0) {
         Swal.fire({
@@ -61,9 +62,10 @@ export default function UserDataForm({ onSubmit, initialData }) {
     }
 
     try {
+      // শুধু enabledDays পর্যন্ত data পাঠাবে
       const filteredData = dailyData.slice(0, enabledDays);
 
-      // Send only day, distance, time, year and month for server to calculate speed
+      // Server-এ পাঠানোর জন্য year, month যোগ করো
       const dataToSend = filteredData.map((item) => ({
         day: item.day,
         distance: item.distance,
@@ -89,6 +91,7 @@ export default function UserDataForm({ onSubmit, initialData }) {
 
       const updatedData = await response.json();
 
+      // সার্ভার থেকে আসা full dailyData কে set করবে, তাই আগের data থাকবে
       if (updatedData.data?.dailyData) {
         setDailyData(updatedData.data.dailyData);
       }
