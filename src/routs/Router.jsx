@@ -48,9 +48,9 @@ const router = createBrowserRouter(
             
             {
                 path:"/allmarathon",
-                element:<PrivetRout>
+                element:
                             <AllMarathonEvents></AllMarathonEvents>
-                        </PrivetRout>
+                       
             },
             // {
             //     path:"/marathondetails",
@@ -62,9 +62,9 @@ const router = createBrowserRouter(
             {
                 path:"/marathon/:id",
                 loader:({params})=>fetch(`${import.meta.env.VITE_API_URL}/marathon/${params.id}`),
-                element:<PrivetRout>
+                element:
                             <MarathonDetailsPage></MarathonDetailsPage>
-                        </PrivetRout>
+                        
             },
             {
                 path:"/applymarathon/:id",
