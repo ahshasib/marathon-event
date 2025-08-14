@@ -27,9 +27,9 @@ const Footer = () => {
                 </nav>
                 <nav>
                     <h6 class="font-extrabold lightgreen">Legal</h6>
-                    <a class="link link-hover" href='#'>Blogs</a>
-                    <a class="link link-hover" href='#'>Members</a>
-                    <a class="link link-hover" href='#'>Dashboard</a>
+                    <Link to="/blog">Blogs</Link>
+                    <Link to="/members">Members</Link>
+                    <Link to="/dashboard">Dashboard</Link>
                 </nav>
             </footer>
             <footer class="footer text-base-content text-white border-base-300 border-t px-10 py-4">

@@ -85,7 +85,7 @@ const VirtualRun = () => {
                 Let's create a new dream.
               </h2>
               <p className="text-gray-200 text-sm pb-5">Now there will be no obstacles to fulfilling your dreams. If you are confident</p>
-              <Link className="bg-white text-black font-bold py-1 px-6  hover:bg-gray-800 hover:text-white transition">Explore Now</Link>
+              <Link to="/allmarathon" className="bg-white text-black font-bold py-1 px-6  hover:bg-gray-800 hover:text-white transition">Explore Now</Link>
             </div>
           </motion.div>
 

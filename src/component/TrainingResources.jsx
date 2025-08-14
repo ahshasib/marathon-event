@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle, Timer, Droplet, Heart, Shield } from "lucide-react";
+import { Link } from "react-router";
 
 const rules = [
   {
@@ -65,9 +66,12 @@ const TrainingResources = () => {
             ))}
           </ul>
           <div className="m-12">
-          <button className="bg-gray-900 text-white font-bold py-2 px-8  hover:bg-gray-800 hover:text-white transition">
-                Book Now
+         
+         <Link to="/allmarathon">
+         <button className="bg-gray-900 text-white font-bold py-2 px-8  hover:bg-gray-800 hover:text-white transition">
+                Join Now
             </button>
+         </Link>
           </div>
         </div>
       </div>

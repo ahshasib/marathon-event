@@ -4,12 +4,12 @@ A full-stack web application that allows users to create, explore, and register 
 
 ## 🌐 Live Website
 
-🔗 [Visit Live Site](https://assignment-11-c46c7.web.app/)
+🔗 [Visit Live Site](https://milesmaster-81633.web.app)
 
 ## 📂 GitHub Repositories
 
-- **Client Repo**: [GitHub - marathon-client](https://github.com/your-username/marathon-client)
-- **Server Repo**: [GitHub - marathon-server](https://github.com/your-username/marathon-server)
+- **Client Repo**: [GitHub - marathon-client](https://github.com/ahshasib/marathon-event)
+- **Server Repo**: [GitHub - marathon-server](https://github.com/ahshasib/marathon-event-server)
 
 ---
 
@@ -51,4 +51,3 @@ A full-stack web application that allows users to create, explore, and register 
 ---
 
 ## 📁 Folder Structure
-

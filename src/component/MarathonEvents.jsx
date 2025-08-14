@@ -43,9 +43,11 @@ const MarathonEvents = () => {
             <p className="mb-4 text-sm">
               Join now and get exclusive benefits, training guides, and merchandise discounts!
             </p>
+            <Link to="/allmarathon">
             <button className="bg-yellow-400 text-black font-semibold py-2 px-4  hover:bg-yellow-300 transition">
               Learn More
             </button>
+            </Link>
           </div>
         </div>
 
