@@ -33,7 +33,7 @@ const {
        <Helmet>
     <title>MarathonDetails | MarathonMate</title>
   </Helmet>
-      <div className="bg-gradient-to-r from-green-400 to-blue-500 w-11/12 mx-auto p-6 md:p-10 rounded-2xl shadow-md">
+      <div className=" w-11/12 mx-auto p-6 md:p-10 rounded-2xl shadow-md">
         <div className="flex flex-col md:flex-row justify-between items-start">
           {/* Left Section */}
           <div className="w-full md:w-[55%]">
@@ -41,7 +41,7 @@ const {
 
             <div className="pt-4 space-y-2">
               <div className='flex flex-col md:flex-row justify-between gap-2'>
-                <h2 className="text-black font-bold text-2xl">{title}</h2>
+                <h2 className=" font-bold text-2xl">{title}</h2>
                 <h3 className="text-red-400 font-bold">Total Registration: {registrationCount || 0}</h3>
               </div>
 
@@ -56,7 +56,7 @@ const {
                 to={isRegistrationEnded ? "#" : `/applymarathon/${_id}`}
                 onClick={(e) => isRegistrationEnded && e.preventDefault()}
               >
-                <button className={`btn w-full mt-5 font-bold ${isRegistrationEnded ? 'bg-red-400 cursor-not-allowed' : 'bg-gradient-to-r from-blue-400 to-green-500'}`} disabled={isRegistrationEnded}>
+                <button className={`btn w-full mt-5 font-bold ${isRegistrationEnded ? 'bg-red-400 cursor-not-allowed' : 'bg-black border border-white text-white'}`} disabled={isRegistrationEnded}>
                   {isRegistrationEnded ? "Registration Closed" : "Register Now"}
                 </button>
               </Link>

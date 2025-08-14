@@ -26,6 +26,7 @@ if(!data.length) return <Loading></Loading>
     <title>AllMarathon | MarathonMate</title>
   </Helmet>
     <div>
+    <div className=" py-8 w-full bg-gray-600"></div>
     <div className="px-4 py-12 max-w-7xl mx-auto">
          <h2 className="text-4xl font-bold text-center mb-10">🏃‍♂️ Marathon Events</h2>
          <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -56,7 +57,7 @@ if(!data.length) return <Loading></Loading>
                  <p className="text-gray-700 text-sm line-clamp-3">{event.description}</p>
                  <div className="mt-3">
                   <NavLink to={`/marathon/${event._id}`}>
-                  <button className="btn bg-gradient-to-r from-green-400 to-blue-500 border-none shadow-lg w-full">See Details</button>
+                  <button className="btn bg-black border border-white text-white shadow-lg w-full">See Details</button>
                   </NavLink> 
                  </div>
                </div>

@@ -6,7 +6,7 @@
 @plugin "daisyui"; */
 
 .active{
-    color:#E8FF02;
+    color:#facc15;
 }
 .oswald{
     font-family: "Oswald", sans-serif;
@@ -15,7 +15,7 @@
   }
 
   .lightgreen{
-    color:#E8FF02;
+    color:#facc15;
   }
 
   /* global.css বা index.css এ */

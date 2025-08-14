@@ -14,11 +14,11 @@ const MarathonEvents = () => {
   if (!data.length) return <Loading />;
 
   return (
-    <div className='bg-gray-50 py-20'>
+    <div className=' py-20'>
       <div className='text-center'>
         <p className='text-xl lightgreen py-3'>You have to Check</p>
-        <h2 className='text-4xl md:text-6xl text-gray-900'>All Marathon Events</h2>
-        <p className='text-sm text-gray-600 w-[80%] mx-auto pt-2'>Discover upcoming marathons, join the community, and take your running journey to the next level!</p>
+        <h2 className='text-4xl md:text-6xl '>All Marathon Events</h2>
+        <p className='text-sm w-[80%] mx-auto pt-2'>Discover upcoming marathons, join the community, and take your running journey to the next level!</p>
       </div>
 
       <div className="w-[80%] mx-auto px-4 py-12 flex flex-col lg:flex-row items-stretch gap-8 ">

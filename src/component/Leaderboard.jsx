@@ -55,7 +55,7 @@ const Leaderboard = () => {
           >
             {dummyData.map((member, index) => (
               <SwiperSlide key={index}>
-                <div className="  text-black shadow-lg  mt-10 p-4 flex flex-col items-center text-center hover:scale-105 hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px]" style={{ backgroundColor: '#E8FF02' }}>
+                <div className="  text-black shadow-lg  mt-10 p-4 flex flex-col items-center text-center hover:scale-105 hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px]" style={{ backgroundColor: '#facc15' }}>
                   <img
                     src={member.image}
                     alt={member.name}

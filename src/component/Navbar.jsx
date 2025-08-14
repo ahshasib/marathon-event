@@ -61,15 +61,15 @@ const Navbar = () => {
   return (
     <div>
       {/* Top Bar */}
-      <div className="text-black py-3 px-4 flex justify-between items-center text-sm" style={{ backgroundColor: '#E8FF02' }}>
+      <div className="text-black py-3 px-4 flex justify-between items-center text-sm" style={{ backgroundColor: '#facc15' }}>
         <div className="flex items-center gap-4">
           <span className="flex items-center gap-2"><FaEnvelope /> support@milesmaster.com</span>
           <span className="flex items-center gap-2"><FaPhoneAlt /> +880 1234-567890</span>
         </div>
         <div className="flex items-center gap-5">
-          <a href="#" className="hover:text-blue-600"><FaFacebookF /></a>
-          <a href="#" className="hover:text-pink-500"><FaInstagram /></a>
-          <a href="#" className="hover:text-sky-400"><FaTwitter /></a>
+          <a href="https://www.facebook.com/" className="hover:text-blue-600"><FaFacebookF /></a>
+          <a href="https://www.instagram.com/" className="hover:text-pink-500"><FaInstagram /></a>
+          <a href="https://x.com/home" className="hover:text-sky-400"><FaTwitter /></a>
         </div>
       </div>
 

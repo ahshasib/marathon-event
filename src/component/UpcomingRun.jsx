@@ -15,16 +15,16 @@ const MarathonEvents = () => {
   if (!data.length) return <Loading />;
 
   return (
-    <div className="bg-gray-50 py-10">
+    <div className=" py-10">
       {/* Section Header */}
       <div className="text-center mb-10">
         <p className="lightgreen uppercase tracking-widest text-sm font-semibold">
           Don’t Miss Out
         </p>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mt-2">
+        <h2 className="text-4xl md:text-5xl font-extrabold  mt-2">
           Upcoming Marathon Events
         </h2>
-        <p className="text-gray-500 py-4 max-w-xl mx-auto">
+        <p className=" py-4 max-w-xl mx-auto">
           Get ready to challenge yourself and join thousands of runners in these exciting marathon events. 
           Sign up now before the tickets run out!
         </p>

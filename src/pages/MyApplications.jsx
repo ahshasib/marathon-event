@@ -22,9 +22,13 @@ const MyApplications = () => {
 
   const handleDelete = async (id) => {
     try {
-      const res = await fetch(`https://assignment-11-server-ecru-five.vercel.app//applications/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/applications/${id}`, {
         method: "DELETE",
+        headers: {
+          authorization: `Bearer ${user.accessToken}`
+        },
       });
+      
 
       const data = await res.json();
       if (data.deletedCount > 0) {
@@ -49,14 +53,15 @@ const MyApplications = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const res = await fetch(`https://assignment-11-server-ecru-five.vercel.app/applications/${editData._id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/applications/${editData._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        authorization: `Bearer ${user.accessToken}` // ✅ token add করা হলো
       },
       body: JSON.stringify(editData),
     });
-
+    
     const data = await res.json();
     if (data.modifiedCount > 0) {
       Swal.fire({
@@ -80,7 +85,7 @@ const MyApplications = () => {
        <Helmet>
     <title>MyApplication | MarathonMate</title>
   </Helmet>
-      <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">📄 My Applications</h2>
+      <h2 className="text-3xl font-bold text-center mb-6 ">📄 My Applications</h2>
 
       <div className="hidden md:block overflow-x-auto">
         <table className="table table-zebra w-full border rounded-lg">

@@ -54,7 +54,7 @@ const ReviewSection = () => {
       <div
         className="absolute -top-36 md:-top-28 shadow-xl w-[95%] md:w-[70%] px-16 flex flex-col md:flex-row items-center md:items-stretch gap-4 md:gap-0 py-10"
         style={{
-          backgroundColor: "#E8FF02",
+          backgroundColor: "#facc15",
         }}
       >
         {/* Left Side (fixed text) */}

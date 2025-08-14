@@ -2,7 +2,10 @@ import React from "react";
 
 const BlogPage = () => {
   return (
-    <main className="max-w-5xl mx-auto px-6 py-12 sm:py-16">
+   <div>
+     <div className="py-8 bg-gray-500 w-full"></div>
+     <main className="max-w-5xl mx-auto px-6 py-12 sm:py-16">
+     
       {/* Blog Title */}
       <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
         Preparing for Your First Marathon: A Complete Guide to Success
@@ -96,6 +99,7 @@ const BlogPage = () => {
         </p>
       </section>
     </main>
+   </div>
   );
 };
 

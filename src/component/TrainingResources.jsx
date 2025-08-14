@@ -31,7 +31,7 @@ const rules = [
 
 const TrainingResources = () => {
   return (
-    <section className="py-32 px-4 bg-gray-50 text-gray-900">
+    <section className="py-32 px-4">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         {/* Left Side - Overlapping Images */}
         <div className="relative flex justify-center lg:justify-start">
@@ -47,10 +47,10 @@ const TrainingResources = () => {
 
         {/* Right Side - Rules */}
         <div>
-          <h2 className="text-3xl md:text-7xl font-semibold mb-4 text-gray-900">
+          <h2 className="text-3xl md:text-7xl font-semibold mb-4 ">
             Marathon Rules & Guidelines
           </h2>
-          <p className="text-gray-500 mb-6">
+          <p className=" mb-6">
             Ensure a safe and fair race for everyone by following these important guidelines during the marathon.
           </p>
           <ul className="space-y-5">
