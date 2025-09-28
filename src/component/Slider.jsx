@@ -24,53 +24,53 @@ const HeroSection = () => {
   }, [eventDate]);
 
   return (
-    <div>
-      {/* Top Banner */}
-      <div className=" py-8 w-full bg-gray-600"></div>
+    <div
+  className="relative w-full min-h-[90vh] flex items-center justify-center px-4 sm:px-8 md:px-20"
+  style={{
+    backgroundImage: `url('https://i.ibb.co/gZmS3qCQ/1.png')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  }}
+>
+  {/* Dark overlay for readability */}
+  {/* <div className="absolute inset-0 bg-black/40"></div> */}
 
-      {/* Main Section */}
-      <div className="w-11/12 mx-auto min-h-[90vh] flex flex-col md:flex-row items-center justify-between px-4 sm:px-8 md:px-20 relative">
-
-        {/* Left Side Text */}
-        <div className="md:w-1/2 space-y-4 pt-10 text-center md:text-left">
-          <p className="text-lg sm:text-xl text-yellow-400 tracking-widest">
-            Running Club
-          </p>
-          <h2 className="text-4xl sm:text-5xl lg:text-8xl font-bold leading-tight">
-            What we do in life echoes in eternity
-          </h2>
-          <p className="text-base sm:text-lg md:w-[80%] text-gray-700 mx-auto md:mx-0">
-            Instead of viewing training as a chore, reframe it as a privilege and an opportunity 
-            to improve your physical and mental health.
-          </p>
-          <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-5">
-            
-             <Link to="/allmarathon">
-             <button className="border border-black bg-white text-black px-4 sm:px-6 py-2 text-base sm:text-lg shadow-lg hover:bg-gray-400 transition">
-                Explore More
-              </button>
-             </Link>
-           
-             <Link to="/blog">
-              <button className="bg-black border border-white text-white px-4 sm:px-6 py-2 text-base sm:text-lg shadow-lg hover:bg-gray-600 transition">
-                Learn More
-              </button>
-              </Link>
-          </div>
-        </div>
-
-        {/* Right Side Image + Event Info */}
-        <div className="md:w-1/2 flex justify-center relative mt-6 md:mt-0">
-          <img
-            src="./b1.png"
-            alt="Running"
-            className="w-full max-w-3xl object-cover rounded-lg"
-          />
-          <EventInfo />
-        </div>
-
+  {/* Content */}
+  <div className="relative w-full flex flex-col md:flex-row items-start md:items-center justify-between text-center md:text-left">
+    {/* Left Side Text */}
+    <div className="space-y-4 pt-10 md:pt-0 text-white md:w-1/2 z-10">
+      <p className="text-lg sm:text-xl text-yellow-400 tracking-widest">
+        Running Club
+      </p>
+      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+        What we do in life echoes in eternity
+      </h2>
+      <p className="text-base sm:text-lg md:w-[80%]">
+        Instead of viewing training as a chore, reframe it as a privilege and an opportunity 
+        to improve your physical and mental health.
+      </p>
+      <div className="flex flex-wrap justify-center md:justify-start gap-3 sm:gap-5">
+        <Link to="/allmarathon">
+          <button className="border border-black bg-white text-black px-4 sm:px-6 py-2 text-base sm:text-lg shadow-lg hover:bg-gray-400 transition">
+            Explore More
+          </button>
+        </Link>
+        <Link to="/blog">
+          <button className="bg-black border border-white text-white px-4 sm:px-6 py-2 text-base sm:text-lg shadow-lg hover:bg-gray-600 transition">
+            Learn More
+          </button>
+        </Link>
       </div>
     </div>
+
+    {/* EventInfo - move to bottom-right */}
+    <div className=" relative md:w-1/2 flex justify-end items-end mt-10 md:mt-0 z-10">
+      <EventInfo/>
+    </div>
+  </div>
+</div>
+
   );
 };
 
