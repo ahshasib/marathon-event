@@ -56,7 +56,7 @@ const Navbar = () => {
     </>
   );
 
-  const buttonClasses = "btn bg-white text-black rounded-none px-6 py-2 text-lg border-none shadow-lg hover:bg-gray-400 hover:bg-opacity-40 transition";
+  const buttonClasses = "btn bg-white text-black rounded-none px-3 py-1 lg:px-6 lg:py-2 text-md lg:text-lg border-none shadow-lg hover:bg-gray-400 hover:bg-opacity-40 transition";
 
   return (
     <div>

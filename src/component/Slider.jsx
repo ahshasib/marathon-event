@@ -39,11 +39,11 @@ const HeroSection = () => {
   {/* Content */}
   <div className="relative w-full flex flex-col md:flex-row items-start md:items-center justify-between text-center md:text-left">
     {/* Left Side Text */}
-    <div className="space-y-4 pt-10 md:pt-0 text-white md:w-1/2 z-10">
-      <p className="text-lg sm:text-xl text-yellow-400 tracking-widest">
+    <div className="space-y-4 mt-10 md:-mt-20 lg:mt-0 text-white w-full lg:w-1/2 z-10">
+      <p className="text-lg md:text-2xl text-yellow-400 tracking-widest">
         Running Club
       </p>
-      <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+      <h2 className="text-4xl sm:text-5xl lg:text-8xl font-bold leading-tight">
         What we do in life echoes in eternity
       </h2>
       <p className="text-base sm:text-lg md:w-[80%]">
@@ -65,7 +65,7 @@ const HeroSection = () => {
     </div>
 
     {/* EventInfo - move to bottom-right */}
-    <div className=" relative md:w-1/2 flex justify-end items-end mt-10 md:mt-0 z-10">
+    <div className=" relative w-full lg:w-1/2 flex justify-end items-end mt-20 md:mt-0 z-10">
       <EventInfo/>
     </div>
   </div>

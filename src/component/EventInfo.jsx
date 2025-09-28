@@ -37,7 +37,7 @@ const EventInfo = () => {
 
   return (
     <div className="
-     bsolute -top-20 right-0 w-full max-w-lg text-white p-4
+     md:absolute mt-10 lg:mt-0 top-32 right-20 w-full max-w-xl text-white p-4
     ">
       {/* Title Section */}
       <div className="mb-2 ">
