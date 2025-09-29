@@ -48,8 +48,7 @@ const Counter = ({ end, label, description, linkText }) => {
 const CounterSection = () => {
   return (
     <section
-      className="bg-black py-20 px-5 flex flex-col md:flex-row justify-center items-center gap-10 w-full mx-auto 
-      shadow-[0_15px_60px_rgb(202,138,4,0.6)]"
+      className="bg-black py-20 px-5 flex flex-col md:flex-row justify-center items-center gap-10 w-full mx-auto border-b-8 border-yellow-500"
     >
       <Counter
         end={195}

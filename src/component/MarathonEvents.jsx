@@ -16,9 +16,9 @@ const MarathonEvents = () => {
   return (
     <div className=' py-20 bg-black'>
       <div className='text-center'>
-        <p className='text-xl lightgreen py-3'>You have to Check</p>
-        <h2 className='text-4xl md:text-6xl '>All Marathon Events</h2>
-        <p className='text-sm w-[80%] mx-auto pt-2'>Discover upcoming marathons, join the community, and take your running journey to the next level!</p>
+        <p className='text-xl lightgreen py-3 uppercase'>You have to Check</p>
+        <h2 className='text-4xl md:text-6xl text-white uppercase font-bold'>All Marathon Events</h2>
+        <p className='text-sm w-[80%] md:w-[60%] lg:w-[40%] mx-auto pt-2 text-gray-400 uppercase'>Running isn’t just about speed, distance, or finishing lines—it’s about passion, dedication, and the journey we all share as a community. In this section, you’ll discover all our marathon events designed for runners of every level, from beginners taking their very first step to seasoned athletes chasing new personal records.</p>
       </div>
 
       <div className="w-[80%] mx-auto px-4 py-12 flex flex-col lg:flex-row items-stretch gap-8 ">
