@@ -14,7 +14,7 @@ const MarathonEvents = () => {
   if (!data.length) return <Loading />;
 
   return (
-    <div className=' py-20'>
+    <div className=' py-20 bg-black'>
       <div className='text-center'>
         <p className='text-xl lightgreen py-3'>You have to Check</p>
         <h2 className='text-4xl md:text-6xl '>All Marathon Events</h2>
@@ -66,7 +66,7 @@ const MarathonEvents = () => {
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-6">
+              <div className="absolute inset-0 flex flex-col justify-end p-6">
                 <h3 className="text-white font-extrabold text-xl md:text-2xl leading-tight">
                   {event.title.toUpperCase()}
                 </h3>

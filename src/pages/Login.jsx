@@ -92,7 +92,13 @@ const Login = () => {
     .catch(error =>{
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log(errorMessage,errorCod)
+      Swal.fire({
+        icon: 'error',
+        title: 'Sorry have some problem',
+        text: `Your, ${errorMessage}!`,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'OK'
+      })
     })
     }
   

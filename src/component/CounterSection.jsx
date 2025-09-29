@@ -24,11 +24,16 @@ const Counter = ({ end, label, description, linkText }) => {
   }, [inView, end]);
 
   return (
-    <div ref={ref} className="flex flex-col items-center px-6 text-center max-w-xs md:max-w-sm">
+    <div
+      ref={ref}
+      className="flex flex-col items-center px-6 text-center max-w-xs md:max-w-sm"
+    >
       <h2 className="lightgreen text-5xl md:text-6xl font-extrabold tracking-wide">
         {count.toLocaleString()}
       </h2>
-      <p className="uppercase tracking-widest text-white text-sm md:text-base mt-2">{label}</p>
+      <p className="uppercase tracking-widest text-white text-sm md:text-base mt-2">
+        {label}
+      </p>
       <p className="text-gray-300 mt-3 text-sm md:text-base">{description}</p>
       <a
         href="#"
@@ -42,8 +47,10 @@ const Counter = ({ end, label, description, linkText }) => {
 
 const CounterSection = () => {
   return (
-    <section className=" bg-black py-20 px-5 flex flex-col md:flex-row justify-center items-center gap-10 w-full  mx-auto">
-
+    <section
+      className="bg-black py-20 px-5 flex flex-col md:flex-row justify-center items-center gap-10 w-full mx-auto 
+      shadow-[0_15px_60px_rgb(202,138,4,0.6)]"
+    >
       <Counter
         end={195}
         label="Running Awards"

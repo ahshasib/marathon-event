@@ -25,7 +25,7 @@ const HeroSection = () => {
 
   return (
     <div
-  className="relative w-full min-h-[90vh] flex items-center justify-center px-4 sm:px-8 md:px-20"
+  className="relative w-full min-h-[90vh] flex items-center justify-center px-4 sm:px-8 md:px-8"
   style={{
     backgroundImage: `url('https://i.ibb.co/gZmS3qCQ/1.png')`,
     backgroundSize: 'cover',
@@ -37,7 +37,7 @@ const HeroSection = () => {
   {/* <div className="absolute inset-0 bg-black/40"></div> */}
 
   {/* Content */}
-  <div className="relative w-full flex flex-col md:flex-row items-start md:items-center justify-between text-center md:text-left">
+  <div className="relative w-11/12 flex flex-col md:flex-row items-start md:items-center justify-between text-center md:text-left">
     {/* Left Side Text */}
     <div className="space-y-4 mt-10 md:-mt-20 lg:mt-0 text-white w-full lg:w-1/2 z-10">
       <p className="text-lg md:text-2xl text-yellow-400 tracking-widest">

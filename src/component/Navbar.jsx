@@ -37,20 +37,20 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <NavLink to="/" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Home</NavLink>
+        <NavLink to="/" className="text-white text-lg lg:text-xl" onClick={() => setMobileMenuOpen(false)}>Home</NavLink>
       </li>
       <li>
-        <NavLink to="/allmarathon" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Marathons</NavLink>
+        <NavLink to="/allmarathon" className="text-white text-lg lg:text-xl" onClick={() => setMobileMenuOpen(false)}>Marathons</NavLink>
       </li>
       <li>
-        <NavLink to="/blog" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Blogs</NavLink>
+        <NavLink to="/blog" className="text-white text-lg lg:text-xl" onClick={() => setMobileMenuOpen(false)}>Blogs</NavLink>
       </li>
       <li>
-        <NavLink to="/members" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Members</NavLink>
+        <NavLink to="/members" className="text-white text-lg lg:text-xl" onClick={() => setMobileMenuOpen(false)}>Members</NavLink>
       </li>
       {user && (
         <li>
-          <NavLink to="/dashboard" className="text-white text-lg md:text-xl" onClick={() => setMobileMenuOpen(false)}>Dashboard</NavLink> 
+          <NavLink to="/dashboard" className="text-white text-lg lg:text-xl" onClick={() => setMobileMenuOpen(false)}>Dashboard</NavLink> 
         </li>
       )}
     </>
