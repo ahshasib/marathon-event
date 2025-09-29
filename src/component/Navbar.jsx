@@ -85,9 +85,9 @@ const Navbar = () => {
 
           {/* Logo section 10% */}
           <div className="navbar-start flex-shrink-0" style={{ width: '10%' }}>
-            <NavLink to="/" className="flex items-center gap-2">
-              <img src="./cardio.png" alt="logo" className="w-10 rounded-md" />
-              <h1 className="text-3xl text-white">MilesMaster</h1>
+            <NavLink to="/" className="flex items-center">
+              <img src="./logo.png" alt="logo" className="w-28" />
+              
             </NavLink>
           </div>
 

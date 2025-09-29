@@ -48,26 +48,32 @@ const Counter = ({ end, label, description, linkText }) => {
 const CounterSection = () => {
   return (
     <section
-      className="bg-black py-20 px-5 flex flex-col md:flex-row justify-center items-center gap-10 w-full mx-auto border-b-8 border-yellow-500"
+      className="py-20 px-5 flex flex-col md:flex-row justify-center items-center gap-10 w-full mx-auto bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: "url('https://i.ibb.co.com/Fb6Lb8mH/black1.png')" }} 
     >
-      <Counter
-        end={195}
-        label="Running Awards"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus."
-        linkText="Our Awards"
-      />
-      <Counter
-        end={2450}
-        label="Active Members"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus."
-        linkText="See Reviews"
-      />
-      <Counter
-        end={85000}
-        label="Weekly Mileage"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus."
-        linkText="Explore Now"
-      />
+      <div className="bg-black/80 w-full h-full absolute top-0 left-0" /> 
+      {/* overlay চাইলে */}
+
+      <div className="relative flex flex-col md:flex-row justify-center items-center gap-10">
+        <Counter
+          end={195}
+          label="Running Awards"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus."
+          linkText="Our Awards"
+        />
+        <Counter
+          end={2450}
+          label="Active Members"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus."
+          linkText="See Reviews"
+        />
+        <Counter
+          end={85000}
+          label="Weekly Mileage"
+          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus."
+          linkText="Explore Now"
+        />
+      </div>
     </section>
   );
 };
